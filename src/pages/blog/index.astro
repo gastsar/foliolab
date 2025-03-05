@@ -1,0 +1,132 @@
+---
+import BlogCard from "../../components/blog/BlogCard.astro";
+import Layout from "../../layouts/Layout.astro";
+
+// Exemple d'articles de blog
+const blogPosts = [
+  {
+    title: "Comment créer un site web responsive",
+    slug: "comment-creer-un-site-web-responsive",
+    excerpt:
+      "Découvrez les meilleures pratiques pour créer des sites web qui s'adaptent parfaitement à tous les appareils.",
+    date: "15 Mai 2025",
+    author: "Jean Dupont",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80",
+    readTime: "8 min",
+  },
+  {
+    title: "Les tendances du développement web en 2025",
+    slug: "tendances-developpement-web-2025",
+    excerpt:
+      "Explorez les technologies et les tendances qui façonnent l'avenir du développement web cette année.",
+    date: "3 Avril 2025",
+    author: "Marie Martin",
+    image:
+      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+    readTime: "6 min",
+  },
+  {
+    title: "Introduction à l'accessibilité web",
+    slug: "introduction-accessibilite-web",
+    excerpt:
+      "Apprenez pourquoi l'accessibilité web est importante et comment rendre vos sites accessibles à tous les utilisateurs.",
+    date: "20 Mars 2025",
+    author: "Lucas Bernard",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+    readTime: "10 min",
+  },
+  {
+    title: "Optimiser les performances de votre site web",
+    slug: "optimiser-performances-site-web",
+    excerpt:
+      "Techniques et stratégies pour améliorer la vitesse de chargement et les performances globales de votre site web.",
+    date: "5 Février 2025",
+    author: "Sophie Dubois",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80",
+    readTime: "7 min",
+  },
+  {
+    title: "Les bases du SEO pour les développeurs",
+    slug: "bases-seo-pour-developpeurs",
+    excerpt:
+      "Guide pratique pour comprendre et implémenter les principes fondamentaux du référencement naturel dans vos projets web.",
+    date: "12 Janvier 2025",
+    author: "Thomas Leroy",
+    image:
+      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80",
+    readTime: "9 min",
+  },
+];
+---
+
+<Layout title="Blog - Articles et Actualités">
+  <section class="max-w-6xl mx-auto">
+    <h1
+      class="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white"
+    >
+      Blog
+    </h1>
+
+    <!-- Filtres et recherche -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-8 shadow-md">
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      >
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Rechercher un article..."
+            class="w-full md:w-64 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 absolute right-3 top-2.5 text-gray-500 dark:text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-gray-700 dark:text-gray-300"
+            >Filtrer par:</span
+          >
+          <select
+            class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+          >
+            <option value="all">Tous les sujets</option>
+            <option value="development">Développement</option>
+            <option value="design">Design</option>
+            <option value="seo">SEO</option>
+            <option value="performance">Performance</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Liste des articles -->
+    <div class="space-y-8">
+      {
+        blogPosts.map((post) => (
+          <BlogCard
+            slug={post.slug}
+            title={post.title}
+            excerpt={post.excerpt}
+            date={post.date}
+            author={post.author}
+            image={post.image}
+            readTime={post.readTime}
+          />
+        ))
+      }
+    </div>
+
+    <!-- Pagination -->
+  </section>
+</Layout>
