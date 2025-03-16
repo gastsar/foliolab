@@ -1,5 +1,6 @@
 ---
 import Banner from "../components/Banner.astro";
+import CookieConsent from "../components/cookie/CookieConsent.astro";
 import Footer from "../components/Footer/Footer.astro";
 import Header from "../components/Header/Header.astro";
 import "../styles/global.css";
@@ -27,46 +28,25 @@ const { title, description = "Portfolio professionnel" } = Astro.props;
       rel="stylesheet"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Host+Grotesk:wght@300;400;500;700&family=Kanit:wght@300;400;500;700&family=Passion+One:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
   </head>
-  <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+  <body
+    class="min-h-screen font-host flex flex-col bg-secondary text-gray-800 transition-colors duration-300"
+  >
     <Header />
     <Banner />
-    <main class="container mx-auto px-4 py-12 flex-grow">
+    <main class="px-4 py-12 flex-grow">
       <slot />
     </main>
     <Footer />
-    <script>
-      // Script pour gérer le thème clair/sombre
-      const themeToggle = document.getElementById("theme-toggle");
-
-      // Vérifier si le thème est déjà défini dans le localStorage
-      if (
-        localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-
-      // Ajouter un écouteur d'événement pour le bouton de basculement de thème
-      if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-          if (document.documentElement.classList.contains("dark")) {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-          } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-          }
-        });
-      }
-
-    </script>
+    <CookieConsent />
   </body>
 </html>
 
