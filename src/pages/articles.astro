@@ -1,8 +1,21 @@
 ---
 import BlogPost from "../components/blog/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
-const allPosts = Object.values(
-  import.meta.glob("./articles/*.md", { eager: true })
+type Post = {
+  url: string;
+  frontmatter: {
+    title: string;
+    author: string;
+    pubDate: string;
+    readTime: string;
+    image?: {
+      url: string;
+    };
+  };
+};
+
+const allPosts: Post[] = Object.values(
+  import.meta.glob<Post>("./articles/*.md", { eager: true })
 );
 const imgDefault =
   "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80";
@@ -59,7 +72,7 @@ console.log(allPosts);
     </div>
 
     <!-- Liste des articles -->
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <ul class="grid grid-cols-1 gap-6">
       {
         allPosts.map((post) => (
           <BlogPost
@@ -68,7 +81,7 @@ console.log(allPosts);
             author={post.frontmatter.author}
             date={post.frontmatter.pubDate}
             readTime={post.frontmatter.readTime}
-            img={post.frontmatter.image?.url || imgDefault}
+            image={post.frontmatter.image?.url || imgDefault}
           />
         ))
       }

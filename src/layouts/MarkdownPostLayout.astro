@@ -1,6 +1,6 @@
 ---
+/* import "../styles/markdown.css"; */
 import Layout from "./Layout.astro";
-
 const { frontmatter } = Astro.props;
 ---
 
@@ -28,7 +28,7 @@ const { frontmatter } = Astro.props;
     <img
       src={frontmatter.image.url}
       alt={frontmatter.image.alt}
-      class="w-full h-full object-cover brightness-75"
+      class="w-full h-full object-cover brightness-50"
     />
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4"
