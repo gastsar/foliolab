@@ -1,0 +1,55 @@
+---
+import ProjectCard from "../components/portfolio/ProjectCard.astro";
+import Layout from "../layouts/Layout.astro";
+type status = "completed" | "in-progress" | "not-started";
+type Project = {
+  url: string;
+  frontmatter: {
+    title: string;
+    description: string;
+    image?: {
+      url: string;
+    };
+    technos: string[];
+    status: status;
+    type: string;
+    duration: string;
+    repoUrl?: string;
+    demoUrl?: string;
+  };
+};
+// Récupérer tous les projets de portfolio
+const allProjects: Project[] = Object.values(
+  import.meta.glob<Project>("./projects/*.md", { eager: true })
+);
+console.log(allProjects);
+---
+
+<Layout title="Portfolio - Mes Projets">
+  <section class="max-w-6xl mx-auto">
+    <h1
+      class="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white"
+    >
+      Mes Projets
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        allProjects.map((project) => (
+          <ProjectCard
+            slug={project.url}
+            title={project.frontmatter.title}
+            description={project.frontmatter.description}
+            image={project.frontmatter.image?.url || "default-image-url"}
+            technos={project.frontmatter.technos}
+            status={project.frontmatter.status}
+            type={project.frontmatter.type}
+            duration={project.frontmatter.duration}
+            repoUrl={project.frontmatter.repoUrl}
+            demoUrl={project.frontmatter.demoUrl}
+          />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

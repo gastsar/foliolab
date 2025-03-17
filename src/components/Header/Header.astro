@@ -2,25 +2,20 @@
 // Définir les liens de navigation
 const navLinks = [
   { href: "/", label: "Accueil" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/projects", label: "Projets" },
+  { href: "/articles", label: "Articles" },
   { href: "/about", label: "À propos" },
-  { href: "/blog", label: "Blog" },
-
-  { href: "/", label: "À propos" },
 ];
 
 // Définir les langues disponibles
 const languages = [
-  { code: "fr", label: "Français" },
-  { code: "en", label: "English" },
-  { code: "es", label: "Español" },
+  { code: "fr", label: "Fr" },
+  { code: "en", label: "En" },
 ];
 ---
 
-<header
-  class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800"
->
-  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<header class="sticky bg-secondary font-host top-0 z-50 shadow-sm">
+  <div class="mx-auto px-4 py-3 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
       <div
@@ -62,7 +57,7 @@ const languages = [
             <li>
               <a
                 href={link.href}
-                class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                class=" font-kanit text-lg font-semibold text-gray-900 dark:text-gray-700  transition-colors"
               >
                 {link.label}
               </a>
@@ -70,12 +65,20 @@ const languages = [
           ))
         }
       </ul>
-
+    </nav>
+    <div class="hidden md:flex items-center space-x-4">
+      <!-- CTO -->
+      <button
+        class="bg-mint-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-mint-900 transition-colors"
+      >
+        Prenons contact</button
+      >
       <!-- Sélecteur de langue -->
       <div class="relative">
         <select
           id="language-selector"
           class="appearance-none bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md py-1 pl-3 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+          disabled
         >
           {
             languages.map((lang) => (
@@ -139,7 +142,7 @@ const languages = [
           ></path>
         </svg>
       </button>
-    </nav>
+    </div>
   </div>
 
   <!-- Menu mobile (caché par défaut) -->
@@ -243,7 +246,7 @@ const languages = [
   // Script pour le menu mobile
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
-  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+  /*  const themeToggleMobile = document.getElementById("theme-toggle-mobile"); */
   const languageSelectorMobile = document.getElementById(
     "language-selector-mobile"
   );
@@ -254,7 +257,7 @@ const languages = [
     });
   }
 
-  // Synchroniser le thème pour le bouton mobile
+  /*  // Synchroniser le thème pour le bouton mobile
   if (themeToggleMobile) {
     themeToggleMobile.addEventListener("click", () => {
       if (document.documentElement.classList.contains("dark")) {
@@ -265,7 +268,7 @@ const languages = [
         localStorage.setItem("theme", "dark");
       }
     });
-  }
+  } */
 
   // Synchroniser le sélecteur de langue mobile
   if (languageSelectorMobile) {

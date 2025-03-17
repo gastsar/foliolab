@@ -16,16 +16,19 @@ const tagConfig = {
     text: "Avancé",
     bgColor: "bg-red-100",
     textColor: "text-red-700",
+    borderColor: "border-2 border-red-700",
   },
   Intermediate: {
     text: "Intermédiaire",
     bgColor: "bg-yellow-100",
     textColor: "text-yellow-700",
+    borderColor: "border-2 border-yellow-700",
   },
   Beginner: {
     text: "Débutant",
     bgColor: "bg-green-100",
     textColor: "text-green-700",
+    borderColor: "border-2 border-green-700",
   },
 };
 
@@ -43,7 +46,7 @@ const triggerConfetti = () => {
 ---
 
 <span
-  class={`relative group px-3 py-1 text-sm font-medium ${tagStyle.bgColor} ${tagStyle.textColor} rounded-full cursor-pointer`}
+  class={`relative group px-3 py-1 text-sm font-medium ${tagStyle.bgColor} ${tagStyle.textColor} ${tagStyle.borderColor} rounded-full cursor-pointer`}
 >
   <i class={icon}></i>
   {name}

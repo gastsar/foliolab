@@ -1,0 +1,73 @@
+---
+/* import "../styles/markdown.css"; */
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <!-- Breadcrumb Sticky -->
+  <nav
+    class="fixed top-28 left-0 w-full bg-white/80 backdrop-blur-md py-3 px-6 z-50"
+  >
+    <div
+      class="max-w-3xl mx-auto flex items-center space-x-2 text-sm text-gray-600"
+    >
+      <a href="/" class="hover:text-primary-600 transition-colors">🏠 Accueil</a
+      >
+      <span>/</span>
+      <a href="/articles" class="hover:text-primary-600 transition-colors"
+        >Articles</a
+      >
+      <span>/</span>
+      <span class="text-gray-900 font-semibold">{frontmatter.title}</span>
+    </div>
+  </nav>
+
+  <!-- Hero Image -->
+  <div class="relative w-full h-96 bg-gray-900 mt-14">
+    <img
+      src={frontmatter.image.url}
+      alt={frontmatter.image.alt}
+      class="w-full h-full object-cover brightness-50"
+    />
+    <div
+      class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4"
+    >
+      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg">
+        {frontmatter.title}
+      </h1>
+      <p class="text-lg md:text-xl opacity-80 mt-2">
+        {frontmatter.description}
+      </p>
+    </div>
+  </div>
+
+  <!-- Article Container -->
+  <div
+    class="max-w-3xl mx-auto p-6 md:p-10 bg-white shadow-xl rounded-xl -mt-12 relative z-10"
+  >
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-gray-500 text-sm mb-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+        <p class="font-semibold text-gray-700">✍️ {frontmatter.author}</p>
+      </div>
+      <p>📅 {frontmatter.pubDate.toString().slice(0, 10)}</p>
+    </div>
+
+    <!-- Content -->
+    <article class="text-gray-800 leading-relaxed text-lg space-y-6">
+      <slot />
+    </article>
+
+    <!-- CTA Button -->
+    <div class="mt-10 text-center">
+      <a
+        href="/blog"
+        class="inline-block px-6 py-3 text-white font-medium bg-primary-600 hover:bg-primary-700 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+      >
+        ← Retour au Blog
+      </a>
+    </div>
+  </div>
+</Layout>
