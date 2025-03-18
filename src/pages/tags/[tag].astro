@@ -1,0 +1,65 @@
+---
+import BlogPost from "../../components/blog/BlogPost.astro";
+import ProjectCard from "../../components/portfolio/ProjectCard.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = Object.values(
+    import.meta.glob("../articles/*.md", { eager: true })
+  );
+
+  // Récupérer tous les projets de portfolio
+  const allProjects = Object.values(
+    import.meta.glob("../projects/*.md", { eager: true })
+  );
+
+  const uniqueTags = [
+    ...new Set(allPosts.flatMap((post: any) => post.frontmatter.tags || [])),
+    ...new Set(
+      allProjects.flatMap((project: any) => project.frontmatter.tags || [])
+    ),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post: any) =>
+      (post.frontmatter.tags || []).includes(tag)
+    );
+    const filteredProjects = allProjects.filter((project: any) =>
+      (project.frontmatter.tags || []).includes(tag)
+    );
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts, projects: filteredProjects },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts = [], projects = [] } = Astro.props;
+---
+
+<Layout title={`Articles et projets étiquetés : ${tag}`}>
+  <p>Articles étiquetés avec "{tag}" :</p>
+  <ul class="grid grid-cols-1 gap-6"></ul>
+  {
+    posts.map((post: any) => (
+      <BlogPost
+        url={post.url}
+        image={post.frontmatter.image?.url}
+        title={post.frontmatter.title}
+      />
+    ))
+  }
+</Layout>
+
+<p>Projets étiquetés avec "{tag}" :</p>
+<ul>
+  {
+    projects.map((project: any) => (
+      <li>
+        <ProjectCard slug={project.url} title={project.frontmatter.title} />
+      </li>
+    ))
+  }
+</ul>
