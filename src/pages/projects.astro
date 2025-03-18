@@ -10,6 +10,7 @@ type Project = {
     image?: {
       url: string;
     };
+    tags: string[];
     technos: string[];
     status: status;
     type: string;
@@ -22,7 +23,6 @@ type Project = {
 const allProjects: Project[] = Object.values(
   import.meta.glob<Project>("./projects/*.md", { eager: true })
 );
-console.log(allProjects);
 ---
 
 <Layout title="Portfolio - Mes Projets">
