@@ -6,7 +6,7 @@ interface BlogPost {
   excerpt: string;
   date: string;
   author: string;
-  image: string;
+  image?: string;
   readTime?: string;
 }
 
@@ -23,7 +23,7 @@ const {
 
 <li>
   <article
-    class="group md:max-h-40 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
+    class="group md:max-h-40 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-100 cursor-pointer"
   >
     <div class="md:flex">
       <div class="md:w-1/3">

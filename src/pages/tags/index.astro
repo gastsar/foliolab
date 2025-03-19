@@ -11,7 +11,7 @@ const pageTitle = "Répertoire des étiquettes";
 ---
 
 <Layout title={pageTitle}>
-  <section class="max-w-6xl mx-auto px-6 py-10">
+  <section class="max-w-6xl mx-auto">
     <!-- Titre -->
     <h1
       class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8"
@@ -25,7 +25,7 @@ const pageTitle = "Répertoire des étiquettes";
         tags.map((tag) => (
           <a
             href={`/tags/${tag}`}
-            class="px-4 py-2 bg-mint-100 text-mint-700 dark:bg-mint-900 dark:text-mint-300 rounded-full text-lg font-medium shadow-md transition duration-300 hover:bg-mint-200 dark:hover:bg-mint-700"
+            class=" px-2  py-1 bg-mint-100 text-mint-700 dark:bg-mint-900 dark:text-mint-300 rounded-full text-sm md:text-lg font-medium shadow-md transition duration-300 hover:bg-mint-200 dark:hover:bg-mint-700"
           >
             #{tag}
           </a>

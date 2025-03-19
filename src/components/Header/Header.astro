@@ -1,15 +1,7 @@
 ---
 import Banner from "../Banner.astro";
 import ThemeSelector from "../ThemeSelector.astro";
-import { PAGES, SITE_TITLE } from "@src/consts";
-// Définir les liens de navigation
-const navLinks = [
-  { href: "/", label: "Accueil" },
-  { href: "/projects", label: "Projets" },
-  { href: "/articles", label: "Articles" },
-  { href: "/about", label: "À propos" },
-  { href: "/tags", label: "Etiquettes" },
-];
+import { PAGES } from "../../consts";
 ---
 
 <header class="sticky bg-secondary font-host top-0 z-50 shadow-sm">
@@ -51,13 +43,13 @@ const navLinks = [
     <nav class="hidden md:flex items-center space-x-8">
       <ul class="flex space-x-6">
         {
-          navLinks.map((link) => (
+          PAGES.map((page) => (
             <li>
               <a
-                href={link.href}
+                href={page.href}
                 class=" font-kanit text-lg font-semibold text-gray-900 dark:text-gray-700  transition-colors"
               >
-                {link.label}
+                {page.title}
               </a>
             </li>
           ))
@@ -121,13 +113,13 @@ const navLinks = [
     <nav class="container mx-auto px-4 py-3">
       <ul class="space-y-3">
         {
-          navLinks.map((link) => (
+          PAGES.map((link) => (
             <li>
               <a
                 href={link.href}
                 class="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2"
               >
-                {link.label}
+                {link.title}
               </a>
             </li>
           ))
