@@ -1,9 +1,13 @@
 ---
 // FloatingCV.astro
+import cv from "../assets/pdf/kevine_dev.pdf";
 ---
 
 <div class="fixed text-sm md:text-base bottom-5 left-5 z-40 cursor-move">
   <a
+    href={cv}
+    download="kevine_dev.pdf"
+    title="Télécharger mon CV"
     class="p-4 bg-mint-800 hover:bg-gray-100 shadow-lg border-transparent font-semibold rounded-full transition-all duration-300 transform hover:shadow-xl"
   >
     📄
