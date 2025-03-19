@@ -27,15 +27,19 @@ export const PAGES: Page[] = [
   {
     title: "Projets",
     href: "/projects",
-  },
-	{
-		title: "articles",
-		href: "/articles",
-	},
-	{
+  },{
 		title: "A propos",
 		href: "/about",
 	},
+	{
+		title: "Articles",
+		href: "/articles",
+	},
+  {
+    title: "Etiquettes",
+    href: "/tags",
+  },
+	
 ];
 
 
