@@ -1,0 +1,19 @@
+---
+const { title, pageTitle } = Astro.props;
+---
+
+<nav
+  class="fixed top-28 left-0 w-full bg-white/80 backdrop-blur-md py-3 px-6 z-50"
+>
+  <div
+    class="max-w-3xl mx-auto flex items-center space-x-2 text-sm text-gray-600"
+  >
+    <a href="/" class="hover:text-primary-600 transition-colors">🏠 Accueil</a>
+    <span>/</span>
+    <a href={`/${pageTitle}`} class="hover:text-primary-600 transition-colors">
+      {pageTitle}</a
+    >
+    <span>/</span>
+    <span class="text-gray-900 font-semibold">{title}</span>
+  </div>
+</nav>

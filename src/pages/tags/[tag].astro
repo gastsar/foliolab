@@ -1,7 +1,8 @@
 ---
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import BlogPost from "../../components/blog/BlogPost.astro";
-import ProjectCard from "../../components/portfolio/ProjectCard.astro";
 import Layout from "../../layouts/Layout.astro";
+export const prerender = true;
 
 export async function getStaticPaths() {
   const allPosts = Object.values(
@@ -40,26 +41,61 @@ const { posts = [], projects = [] } = Astro.props;
 ---
 
 <Layout title={`Articles et projets étiquetés : ${tag}`}>
-  <p>Articles étiquetés avec "{tag}" :</p>
-  <ul class="grid grid-cols-1 gap-6"></ul>
-  {
-    posts.map((post: any) => (
-      <BlogPost
-        url={post.url}
-        image={post.frontmatter.image?.url}
-        title={post.frontmatter.title}
-      />
-    ))
-  }
-</Layout>
+  <Breadcrumb pageTitle="tags" title={tag} />
 
-<p>Projets étiquetés avec "{tag}" :</p>
-<ul>
-  {
-    projects.map((project: any) => (
-      <li>
-        <ProjectCard slug={project.url} title={project.frontmatter.title} />
-      </li>
-    ))
-  }
-</ul>
+  <div class="container mx-auto px-4 py-8">
+    <!-- Titre et tag -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white">
+        Articles et projets étiquetés :
+      </h1>
+      <span
+        class="inline-block mt-3 px-4 py-2 bg-mint-500 text-white text-sm font-semibold rounded-full shadow-md"
+      >
+        #{tag}
+      </span>
+    </div>
+
+    <!-- Liste des articles -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+        📚 Articles
+      </h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          posts.map((post: any) => (
+            <BlogPost
+              url={post.url}
+              title={post.frontmatter.title}
+              author={post.frontmatter.author}
+              date={post.frontmatter.pubDate}
+              readTime={post.frontmatter.readTime}
+              image={post.frontmatter.image?.url}
+            />
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Liste des projets -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+        🚀 Projets
+      </h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          projects.map((project: any) => (
+            <BlogPost
+              url={project.url}
+              title={project.frontmatter.title}
+              author={project.frontmatter.author}
+              date={project.frontmatter.pubDate}
+              readTime={project.frontmatter.readTime}
+              image={project.frontmatter.image?.url}
+            />
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
