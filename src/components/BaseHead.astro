@@ -1,4 +1,12 @@
 ---
+import { ClientRouter } from "astro:transitions";
+/**
+ * @desc This is the base head component that is used on all pages.
+ */
+
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+
 const { title, description, image } = Astro.props;
 ---
 
@@ -23,3 +31,4 @@ const { title, description, image } = Astro.props;
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 />
+<ClientRouter />
