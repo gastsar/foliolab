@@ -10,6 +10,8 @@ import sitemap from "@astrojs/sitemap";
 
 import { SITE } from "./src/consts";
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
@@ -27,8 +29,10 @@ export default defineConfig({
     react(),
     sitemap(),
   ],
+
   output: "server",
   trailingSlash: "ignore",
+
   vite: {
     plugins: [tailwindcss()],
     logLevel: "error",
@@ -41,6 +45,7 @@ export default defineConfig({
       },
     },
   },
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -49,4 +54,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: netlify(),
 });

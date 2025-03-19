@@ -1,11 +1,7 @@
 ---
 import BlogPost from "../components/blog/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
-import { sanityClient } from "sanity:client";
 
-const posts = await sanityClient.fetch(
-  `*[_type == "post" && defined(slug)] | order(publishedAt desc)`
-);
 type Post = {
   url: string;
   frontmatter: {

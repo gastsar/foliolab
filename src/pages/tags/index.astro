@@ -11,32 +11,26 @@ const pageTitle = "Répertoire des étiquettes";
 ---
 
 <Layout title={pageTitle}>
-  <section class="max-w-6xl mx-auto tags">
-    {
-      tags.map((tag) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
+  <section class="max-w-6xl mx-auto px-6 py-10">
+    <!-- Titre -->
+    <h1
+      class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8"
+    >
+      🏷️ {pageTitle}
+    </h1>
+
+    <!-- Liste des tags -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      {
+        tags.map((tag) => (
+          <a
+            href={`/tags/${tag}`}
+            class="px-4 py-2 bg-mint-100 text-mint-700 dark:bg-mint-900 dark:text-mint-300 rounded-full text-lg font-medium shadow-md transition duration-300 hover:bg-mint-200 dark:hover:bg-mint-700"
+          >
+            #{tag}
+          </a>
+        ))
+      }
+    </div>
   </section>
 </Layout>
-<style>
-  a {
-    color: #00539f;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>

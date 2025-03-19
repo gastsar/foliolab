@@ -1,5 +1,6 @@
 ---
 /* import "../styles/markdown.css"; */
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import type { MarkdownLayoutProps } from "astro";
 import Layout from "./Layout.astro";
 type Props = MarkdownLayoutProps<{
@@ -15,22 +16,7 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title}>
   <!-- Breadcrumb Sticky -->
-  <nav
-    class="fixed top-28 left-0 w-full bg-white/80 backdrop-blur-md py-3 px-6 z-50"
-  >
-    <div
-      class="max-w-3xl mx-auto flex items-center space-x-2 text-sm text-gray-600"
-    >
-      <a href="/" class="hover:text-primary-600 transition-colors">🏠 Accueil</a
-      >
-      <span>/</span>
-      <a href="/articles" class="hover:text-primary-600 transition-colors"
-        >Articles</a
-      >
-      <span>/</span>
-      <span class="text-gray-900 font-semibold">{frontmatter.title}</span>
-    </div>
-  </nav>
+  <Breadcrumb title={frontmatter.title} pageTitle="Articles" />
 
   <!-- Hero Image -->
   <div class="relative w-full h-96 bg-gray-900 mt-14">
