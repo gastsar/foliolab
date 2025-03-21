@@ -1,38 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import BlogPost from "../components/blog/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
 
-type Post = {
-  url: string;
-  frontmatter: {
-    title: string;
-    author: string;
-    pubDate: string;
-    readTime: string;
-    image?: {
-      url: string;
-    };
-  };
-};
-
-const allPosts: Post[] = Object.values(
-  import.meta.glob<Post>("./articles/*.md", { eager: true })
-);
-const imgDefault =
-  "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80";
-console.log(allPosts);
+const allPosts = await getCollection("blog");
 ---
 
 <Layout title="Blog - Articles et Actualités">
   <section class="max-w-6xl mx-auto p-6">
-    <h1
-      class="text-4xl font-extrabold mb-8 text-gray-900 dark:text-white text-center"
-    >
+    <h1 class="text-4xl font-extrabold mb-8 text-gray-900 text-center">
       Blog & Actualités
     </h1>
 
     <!-- Barre de recherche et filtres -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg p-5 mb-8 shadow-lg">
+    <!--   <div class="bg-white rounded-lg p-5 mb-8 shadow-lg">
       <div
         class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
       >
@@ -40,7 +21,7 @@ console.log(allPosts);
           <input
             type="text"
             placeholder="Rechercher un article..."
-            class="w-full px-5 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+            class="w-full px-5 py-3 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,11 +37,9 @@ console.log(allPosts);
         </div>
 
         <div class="flex items-center gap-3">
-          <span class="text-sm text-gray-700 dark:text-gray-300"
-            >Filtrer par :</span
-          >
+          <span class="text-sm text-gray-700">Filtrer par :</span>
           <select
-            class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+            class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <option value="all">Tous les sujets</option>
             <option value="development">Développement</option>
@@ -70,19 +49,20 @@ console.log(allPosts);
           </select>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Liste des articles -->
     <ul class="grid grid-cols-1 gap-6">
       {
         allPosts.map((post) => (
           <BlogPost
-            url={post.url}
-            title={post.frontmatter.title}
-            author={post.frontmatter.author}
-            date={post.frontmatter.pubDate}
-            readTime={post.frontmatter.readTime}
-            image={post.frontmatter.image?.url || imgDefault}
+            url={`/posts/${post.id}`}
+            title={post.data.title}
+            date={post.data.pubDate}
+            image={post.data.image.url}
+            author={post.data.author}
+            readTime={post.data.readTime}
+            description={post.data.description}
           />
         ))
       }

@@ -1,6 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
-title: Pourquoi j'ai choisi Windows 
+title: Pourquoi j'ai choisi Windows
 author: Jean Dupont
 description: "Découvrez pourquoi j'ai opté pour Windows comme système d'exploitation de prédilection, en dépit des réputations de Linux et Mac, et comment cet environnement répond à mes besoins quotidiens."
 image:

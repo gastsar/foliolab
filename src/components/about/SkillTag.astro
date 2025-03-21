@@ -1,5 +1,4 @@
 ---
-import confetti from "canvas-confetti";
 
 type ExpertiseType = "Beginner" | "Intermediate" | "Advanced";
 
@@ -34,15 +33,6 @@ const tagConfig = {
 
 const tagStyle = tagConfig[expertise];
 
-const triggerConfetti = () => {
-  if (expertise === "Advanced") {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }, // Position des confettis
-    });
-  }
-};
 ---
 
 <span

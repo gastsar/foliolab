@@ -1,6 +1,5 @@
 ---
 import Banner from "../Banner.astro";
-import ThemeSelector from "../ThemeSelector.astro";
 import { PAGES } from "../../consts";
 ---
 
@@ -176,7 +175,7 @@ import { PAGES } from "../../consts";
   // Script pour le menu mobile
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
-  /*  const themeToggleMobile = document.getElementById("theme-toggle-mobile"); */
+  const themeToggleMobile = document.getElementById("theme-toggle-mobile"); 
   const languageSelectorMobile = document.getElementById(
     "language-selector-mobile"
   );
@@ -187,7 +186,7 @@ import { PAGES } from "../../consts";
     });
   }
 
-  /*  // Synchroniser le thème pour le bouton mobile
+   // Synchroniser le thème pour le bouton mobile
   if (themeToggleMobile) {
     themeToggleMobile.addEventListener("click", () => {
       if (document.documentElement.classList.contains("dark")) {
@@ -198,7 +197,7 @@ import { PAGES } from "../../consts";
         localStorage.setItem("theme", "dark");
       }
     });
-  } */
+  } 
 
   // Synchroniser le sélecteur de langue mobile
   if (languageSelectorMobile) {

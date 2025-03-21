@@ -2,17 +2,17 @@
 const { title, company, period, description } = Astro.props;
 ---
 
-<div class="border-l-4 border-mint-600 dark:border-mint-400 pl-4">
-  <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+<div class="border-l-4 border-mint-600 pl-4">
+  <h3 class="text-lg font-medium text-gray-900">
     {title}
   </h3>
-  <div class="text-mint-800 dark:text-mint-400 font-bold">
+  <div class="text-mint-800 font-bold">
     {company}
   </div>
-  <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+  <div class="text-sm text-gray-600 mb-2">
     {period}
   </div>
-  <p class="text-gray-700 dark:text-gray-300">
+  <p class="text-gray-700">
     {description}
   </p>
 </div>
