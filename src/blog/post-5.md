@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Les bases du SEO pour les développeurs
 author: Thomas Leroy
 description: "Guide pratique pour comprendre et implémenter les principes fondamentaux du référencement naturel dans vos projets web."

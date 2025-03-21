@@ -1,14 +1,14 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Mes extensions de navigateur préférées
+pubDate: 2025-03-19
 author: Kévine
 description: "Découvrez les extensions de navigateur qui facilitent le développement web et l'amélioration de l'expérience utilisateur."
+readTime: "7 min"
 image:
   url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80"
   alt: "Un écran affichant du code avec des outils de développement."
-pubDate: 2025-03-19
-tags: ["extensions navigateur", "développement web", "outils","extensions"]
-readTime: "7 min"
+
+tags: ["extensions navigateur", "développement web", "outils", "extensions"]
 ---
 
 Les extensions de navigateur sont des outils indispensables pour optimiser la productivité des développeurs. Elles offrent des fonctionnalités supplémentaires qui permettent d'améliorer la qualité du code, de tester des sites ou d'analyser la performance d'une application web en un clin d'œil. Voici mes extensions préférées qui m'aident au quotidien dans mon travail de développeur :
@@ -43,4 +43,4 @@ Analyse l’accessibilité d’un site web selon les normes WCAG. C’est un exc
 🎨 **WCAG Color Contrast**  
 Cette extension vérifie la conformité des contrastes de couleurs selon les normes WCAG, assurant ainsi une meilleure lisibilité pour les utilisateurs, en particulier ceux ayant des problèmes de vision.
 
-Ces extensions sont des outils précieux qui m'aident à travailler de manière plus efficace et à produire des sites web de qualité. Que vous soyez un développeur débutant ou expérimenté, ces outils sont essentiels pour améliorer votre flux de travail.  
+Ces extensions sont des outils précieux qui m'aident à travailler de manière plus efficace et à produire des sites web de qualité. Que vous soyez un développeur débutant ou expérimenté, ces outils sont essentiels pour améliorer votre flux de travail.

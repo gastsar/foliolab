@@ -1,43 +1,27 @@
 ---
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getCollection } from "astro:content";
 import BlogPost from "../../components/blog/BlogPost.astro";
 import Layout from "../../layouts/Layout.astro";
 export const prerender = true;
-
 export async function getStaticPaths() {
-  const allPosts = Object.values(
-    import.meta.glob("../articles/*.md", { eager: true })
-  );
-
-  // Récupérer tous les projets de portfolio
-  const allProjects = Object.values(
-    import.meta.glob("../projects/*.md", { eager: true })
-  );
-
+  const allPosts = await getCollection("blog");
   const uniqueTags = [
-    ...new Set(allPosts.flatMap((post: any) => post.frontmatter.tags || [])),
-    ...new Set(
-      allProjects.flatMap((project: any) => project.frontmatter.tags || [])
-    ),
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
   ];
 
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post: any) =>
-      (post.frontmatter.tags || []).includes(tag)
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
     );
-    const filteredProjects = allProjects.filter((project: any) =>
-      (project.frontmatter.tags || []).includes(tag)
-    );
-
     return {
       params: { tag },
-      props: { posts: filteredPosts, projects: filteredProjects },
+      props: { posts: filteredPosts },
     };
   });
 }
-
 const { tag } = Astro.params;
-const { posts = [], projects = [] } = Astro.props;
+const { posts } = Astro.props;
 ---
 
 <Layout title={`Articles et projets étiquetés : ${tag}`}>
@@ -46,7 +30,7 @@ const { posts = [], projects = [] } = Astro.props;
   <div class="container mx-auto px-4 py-8">
     <!-- Titre et tag -->
     <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 class="text-4xl font-bold text-gray-900">
         Articles et projets étiquetés :
       </h1>
       <span
@@ -58,19 +42,18 @@ const { posts = [], projects = [] } = Astro.props;
 
     <!-- Liste des articles -->
     <section class="max-w-6xl mx-auto p-6">
-      <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-        📚 Articles
-      </h2>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">📚 Articles</h2>
       <ul class="grid grid-cols-1 gap-6">
         {
-          posts.map((post: any) => (
+          posts.map((post) => (
             <BlogPost
-              url={post.url}
-              title={post.frontmatter.title}
-              author={post.frontmatter.author}
-              date={post.frontmatter.pubDate}
-              readTime={post.frontmatter.readTime}
-              image={post.frontmatter.image?.url}
+              url={`/posts/${post.id}`}
+              title={post.data.title}
+              date={post.data.pubDate}
+              image={post.data.image.url}
+              author={post.data.author}
+              readTime={post.data.readTime}
+              description={post.data.description}
             />
           ))
         }
@@ -79,11 +62,9 @@ const { posts = [], projects = [] } = Astro.props;
 
     <!-- Liste des projets -->
     <section class="max-w-6xl mx-auto p-6">
-      <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-        🚀 Projets
-      </h2>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">🚀 Projets</h2>
       <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {
+        <!--   {
           projects.map((project: any) => (
             <BlogPost
               url={project.url}
@@ -94,7 +75,7 @@ const { posts = [], projects = [] } = Astro.props;
               image={project.frontmatter.image?.url}
             />
           ))
-        }
+        } -->
       </ul>
     </section>
   </div>

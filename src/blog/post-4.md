@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Optimiser les performances de votre site web
 author: Sophie Dubois
 description: "Techniques et stratégies pour améliorer la vitesse de chargement et les performances globales de votre site web."

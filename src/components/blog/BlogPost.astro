@@ -1,65 +1,62 @@
 ---
-interface BlogPost {
+interface Props {
   url: string;
-  slug: string;
   title: string;
-  excerpt: string;
-  date: string;
+  date: Date;
+  image: string;
   author: string;
-  image?: string;
   readTime?: string;
+  description: string;
 }
 
 const {
   url,
   title,
-  excerpt,
   date,
   author,
   image,
   readTime = "5 min",
+  description,
 } = Astro.props;
 ---
 
 <li>
-  <article
-    class="group md:max-h-40 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-100 cursor-pointer"
-  >
-    <div class="md:flex">
-      <div class="md:w-1/3">
-        <img
-          src={image}
-          alt={title}
-          class="w-full h-24 md:h-full object-cover transition-transform duration-300"
-        />
-      </div>
-      <div class="p-6 md:w-2/3">
-        <div
-          class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3 justify-between sm:justify-start"
-        >
-          <span>{date}</span>
-          <span class="mx-2 hidden sm:inline">•</span>
-          <span>{author}</span>
-          <span class="mx-2 hidden sm:inline">•</span>
-          <span>{readTime} de lecture</span>
+  <a href={url}>
+    <article
+      class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-100 cursor-pointer"
+    >
+      <div class="md:flex">
+        <div class="md:w-1/3 m-4">
+          <img
+            src={image}
+            alt={title}
+            class="w-full h-40 md:h-full object-cover transition-transform duration-300 rounded-lg"
+          />
         </div>
-        <h2
-          class="font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-primary-500"
-        >
-          {title}
-        </h2>
-        <p
-          class="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 line-clamp-3"
-        >
-          {excerpt}
-        </p>
-        <a
-          href={url}
-          class="text-sm inline-block text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors duration-200"
-        >
-          Lire la suite →
-        </a>
+        <div class="px-4 py-2 md:w-2/3 flex flex-col justify-between">
+          <div>
+            <h2
+              class="font-bold mb-4 text-xl text-mint-800 transition-colors duration-300 group-hover:text-primary-500"
+            >
+              {title}
+            </h2>
+            <p
+              class="flex items-center text-sm text-gray-500 mb-3 justify-between sm:justify-start"
+            >
+              <span>{author}</span>
+              <span class="mx-2 hidden sm:inline">•</span>
+              <span>{readTime} de lecture</span>
+            </p>
+            <div>
+              <p class="text-gray-600">{description}</p>
+            </div>
+          </div>
+
+          <span class="text-sm text-gray-500 text-right mt-4"
+            >{new Date(date).toLocaleDateString("fr-FR")}</span
+          >
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </a>
 </li>

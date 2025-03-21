@@ -1,24 +1,28 @@
 ---
 /* import "../styles/markdown.css"; */
 import Breadcrumb from "@/components/Breadcrumb.astro";
-import type { MarkdownLayoutProps } from "astro";
 import Layout from "./Layout.astro";
-type Props = MarkdownLayoutProps<{
-  title: string;
-  description: string;
-  image: {
-    url: string;
-    alt: string;
+
+interface Props {
+  frontmatter: {
+    title: string;
+    author: string;
+    description: string;
+    pubDate: Date;
+    readTime: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
   };
-  author: string;
-  pubDate: string;
-}>;
+}
+
 const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <!-- Breadcrumb Sticky -->
-  <Breadcrumb title={frontmatter.title} pageTitle="articles" />
+  <Breadcrumb title={frontmatter.title} pageTitle="blog" />
 
   <!-- Hero Image -->
   <div class="relative w-full h-96 bg-gray-900">
@@ -39,32 +43,83 @@ const { frontmatter } = Astro.props;
     </div>
   </div>
 
-  <!-- Article Container -->
-  <div
-    class="max-w-3xl mx-auto p-6 md:p-10 bg-white shadow-xl rounded-xl -mt-12 relative z-10"
+  <!-- Main Content -->
+  <section
+    class="container mx-auto flex flex-col md:flex-row gap-8 py-12 px-4 md:px-8"
   >
-    <!-- Metadata -->
-    <div class="flex items-center justify-between text-gray-500 text-sm mb-6">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
-        <p class="font-semibold text-gray-700">✍️ {frontmatter.author}</p>
+    <!-- Article Section -->
+    <article
+      class="w-full md:w-3/4 bg-white shadow-lg rounded-xl p-6 md:p-10"
+      role="article"
+    >
+      <div class="flex items-center justify-between text-gray-500 text-sm mb-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+          <p class="font-semibold text-gray-700">✍️Par {frontmatter.author}</p>
+        </div>
+        <p>📅 {new Date(frontmatter.pubDate).toLocaleDateString()}</p>
       </div>
-      <p>📅 {frontmatter.pubDate.toString().slice(0, 10)}</p>
-    </div>
 
-    <!-- Content -->
-    <article class="text-gray-800 leading-relaxed text-lg space-y-6">
-      <slot />
+      <div class="text-gray-800 leading-relaxed text-lg space-y-6">
+        <slot />
+      </div>
+      <div class="mt-10 text-center">
+        <a
+          href="/blog"
+          class="inline-block px-6 py-3 text-white font-medium bg-mint-600 hover:bg-primary-700 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+        >
+          ← Retour au Blog
+        </a>
+      </div>
     </article>
 
-    <!-- CTA Button -->
-    <div class="mt-10 text-center">
-      <a
-        href="/articles"
-        class="inline-block px-6 py-3 text-white font-medium bg-mint-600 hover:bg-primary-700 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-      >
-        ← Retour au Blog
-      </a>
-    </div>
-  </div>
+    <!-- Aside Section -->
+    <aside
+      class="w-full md:w-1/4 space-y-6 sticky top-40 self-start"
+      role="complementary"
+    >
+      <div class="bg-white shadow-lg rounded-xl p-6">
+        <h2 class="text-2xl font-semibold mb-4">D'autres articles</h2>
+        <ul class="space-y-2 flex flex-wrap gap-1">
+          {
+            frontmatter.tags.map((tag: string) => (
+              <li>
+                <a
+                  href={`/tags/${tag}`}
+                  class="inline-block px-4 py-2 bg-mint-500 text-white text-sm font-semibold rounded-full shadow-md"
+                >
+                  #{tag}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="bg-white shadow-lg rounded-xl p-6">
+        <h2 class="text-2xl font-semibold mb-4">
+          <span class="text-xl">Abonnez-vous à la</span>
+          <span class="text-mint-600">Newsletter</span>
+        </h2>
+        <form>
+          <label
+            for="email"
+            class="block text-gray-700 text-sm font-medium mb-2">Email :</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mint-500"
+            placeholder="Votre email"
+            required
+          />
+          <button
+            type="submit"
+            class="mt-4 w-full bg-mint-600 hover:bg-mint-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition-all duration-300"
+            >S'abonner</button
+          >
+        </form>
+      </div>
+    </aside>
+  </section>
 </Layout>
