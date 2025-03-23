@@ -1,48 +1,70 @@
-# Astro Starter Kit: Basics
+# Portfolio de Kevine
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Bienvenue sur mon portfolio ! Ce site est dédié à mettre en valeur mon travail en tant que développeur web et mobile. Tu y trouveras mes projets récents, des articles de blog sur diverses technologies et des réflexions sur l'industrie du développement.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 Technologies utilisées
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Frontend** : AstroJs
+- **CMS** : Sanity
+- **Base de données** : (selon les besoins)
+- **Déploiement** : Netlify
+- **Outils de développement** : VSCode, Git, Docker
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🎯 Fonctionnalités
 
-## 🚀 Project Structure
+### Portfolio
+Mon portfolio présente les projets sur lesquels j'ai travaillé, incluant des descriptions détaillées, des technologies utilisées et des liens vers les démos.
 
-Inside of your Astro project, you'll see the following folders and files:
+### Blog
+Le blog contient des articles où je partage mes expériences, des tutoriels, et des conseils sur des sujets comme :
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Développement web et mobile
+- Meilleures pratiques de programmation
+- Tendances et nouveautés dans le monde de la tech
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Je prévois d'ajouter de nouvelles catégories et fonctionnalités de blog pour rendre cette section encore plus riche.
 
-## 🧞 Commands
+## 🛠️ Installation et utilisation
 
-All commands are run from the root of the project, from a terminal:
+1. Clonez ce repository :
+    ```bash
+    git clone https://github.com/gastsar/foliolab.git
+    ```
+2. Accédez au répertoire du projet :
+    ```bash
+    cd ton-portfolio
+    ```
+3. Installez les dépendances :
+    ```bash
+    pnpm install
+    ```
+4. Lancer le projet en mode développement :
+    ```bash
+    pnpm run dev
+    ```
+5. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## 📈 Fonctionnalités à venir
 
-## 👀 Want to learn more?
+- Ajout de la gestion de commentaires sur les articles du blog
+- Intégration d'une fonctionnalité de recherche dans le blog
+- Amélioration du SEO pour chaque article
+- Ajout de fonctionnalités interactives (comme des projets en temps réel)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📄 Contribution
+
+Si tu souhaites contribuer à ce projet, n'hésite pas à ouvrir une **issue** ou à proposer des **pull requests**.
+
+## 👨‍💻 Auteur
+
+Kévine  
+Développeur web et mobile freelance  
+[Kevine_dev](https://www.yves-narsonkevine.fr)
+
+## 📜 Licence
+
+Ce projet est sous la licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+> [!TIP]  
+> N'oublie pas de me suivre sur [Instagram](https://www.instagram.com/dev_en_galere) et [LinkedIn](https://www.linkedin.com/in/yvesnarsonkevine) pour suivre mes dernières créations et actualités !
+
