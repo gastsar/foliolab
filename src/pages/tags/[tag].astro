@@ -27,9 +27,9 @@ const { posts } = Astro.props;
 <Layout title={`Articles et projets étiquetés : ${tag}`}>
   <Breadcrumb pageTitle="tags" title=` ${tag}` />
 
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto px-2 py-4">
     <!-- Titre et tag -->
-    <div class="text-center mb-8">
+    <div class="text-center mb-4">
       <h1 class="text-4xl font-bold text-gray-900">
         Articles et projets étiquetés :
       </h1>
@@ -45,7 +45,7 @@ const { posts } = Astro.props;
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">📚 Articles</h2>
       <ul class="grid grid-cols-1 gap-6">
         {
-          posts.map((post) => (
+          posts.map((post: any) => (
             <BlogPost
               url={`/posts/${post.id}`}
               title={post.data.title}
@@ -57,25 +57,6 @@ const { posts } = Astro.props;
             />
           ))
         }
-      </ul>
-    </section>
-
-    <!-- Liste des projets -->
-    <section class="max-w-6xl mx-auto p-6">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">🚀 Projets</h2>
-      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!--   {
-          projects.map((project: any) => (
-            <BlogPost
-              url={project.url}
-              title={project.frontmatter.title}
-              author={project.frontmatter.author}
-              date={project.frontmatter.pubDate}
-              readTime={project.frontmatter.readTime}
-              image={project.frontmatter.image?.url}
-            />
-          ))
-        } -->
       </ul>
     </section>
   </div>

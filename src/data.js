@@ -286,12 +286,15 @@ export const experiences = [
     period: "2020 - 2023",
     description:
       "Création d'interfaces utilisateur réactives et accessibles, optimisation des performances, collaboration avec les designers.",
-    task: [
-      "Développement de l'application web EasyTri en React",
+    taskDo: [
+      "Développement de l'extranet et EspaceClient",
       "Intégration de nouvelles fonctionnalités",
       "Optimisation des performances",
       "Tests unitaires et fonctionnels",
+      "Correction de bugs",
+      "Revues de code",
     ],
+    techo: ["Laravel", "PHP", "Tailwind CSS", "JavaScript", "CSS"],
   },
   {
     title: "Développeur Web Junior (Stage)",
@@ -299,12 +302,11 @@ export const experiences = [
     period: "2021 - 2021",
     description:
       "Développement de fonctionnalités pour des applications web, correction de bugs, participation aux revues de code.",
-    task: [
-      "Développement de l'application web ADM Toulouse en React",
+    taskDo: [
       "Intégration de nouvelles fonctionnalités",
-      "Correction de bugs",
-      "Revues de code",
+      "Developpement de fonctionnalités",
     ],
+    techo: ["WordPress", "PHP", "JavaScript", "CSS"],
   },
   {
     title: "Gestion ",
@@ -323,13 +325,39 @@ export const experiences = [
 // Formation
 export const education = [
   {
-    degree: "Master en Développement Web",
-    institution: "Université de Technologie",
-    period: "2016 - 2018",
+    degree: "Certification RNCP Niveau 6 - Développeur React",
+    institution: "OpenClassrooms",
+    period: "En cours",
+    techno: [
+      "React",
+      "JavaScript",
+      "SCSS",
+      "TypeScript",
+      "Git",
+      "Github",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
   },
   {
-    degree: "Licence en Informatique",
-    institution: "Université des Sciences",
-    period: "2013 - 2016",
+    degree: "Certification RNCP Niveau 5 - Développeur Web et Web Mobile",
+    institution: "Osengo - Toulouse",
+    period: "2022",
+    techno: [
+      "PHP",
+      "JavaScript",
+      "SQL",
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Git",
+      "Github",
+    ],
+  },
+  {
+    degree: "Bac Professionnel - Constructions Métalliques",
+    institution: "LTP - Toamasina",
+    period: "2015",
   },
 ];

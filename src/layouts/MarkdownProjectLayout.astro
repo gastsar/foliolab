@@ -1,14 +1,22 @@
 ---
-import type { MarkdownLayoutProps } from "astro";
 import Layout from "./Layout.astro";
-type Props = MarkdownLayoutProps<{
-  title: string;
-  description: string;
-  image: {
-    url: string;
-    alt: string;
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+    demoUrl?: string;
+    repoUrl?: string;
+    type: string;
+    status: string;
   };
-}>;
+}
+
 const { frontmatter } = Astro.props;
 ---
 
@@ -42,20 +50,10 @@ const { frontmatter } = Astro.props;
         <p class="mt-3">
           Type: <span class="font-medium">{frontmatter.type}</span>
         </p>
-        <p>⏱️ Durée: <span class="font-medium">{frontmatter.duration}</span></p>
       </div>
       <div>
         <h2 class="text-2xl font-semibold">🚀 Technologies utilisées</h2>
-        <div class="flex flex-wrap gap-2 mt-3">
-          {
-            frontmatter.technologies &&
-              frontmatter.technologies.map((tech) => (
-                <span class="px-4 py-2 bg-primary-100 text-primary-800 rounded-full text-sm font-medium shadow-sm">
-                  {tech}
-                </span>
-              ))
-          }
-        </div>
+        <div class="flex flex-wrap gap-2 mt-3"></div>
       </div>
     </div>
   </section>
@@ -82,9 +80,9 @@ const { frontmatter } = Astro.props;
       )
     }
     {
-      frontmatter.githubUrl && (
+      frontmatter.repoUrl && (
         <a
-          href={frontmatter.githubUrl}
+          href={frontmatter.repoUrl}
           class="px-6 py-3 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-900 transition transform hover:scale-105"
           target="_blank"
           rel="noopener noreferrer"

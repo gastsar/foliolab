@@ -1,9 +1,27 @@
 ---
-const { degree, institution, period } = Astro.props;
+const { degree, institution, period, techno } = Astro.props;
 ---
 
-<div>
-  <h3 class="text-lg font-medium text-gray-900">{degree}</h3>
-  <div class="text-mint-600 font-bold">{institution}</div>
-  <div class="text-sm text-gray-600">{period}</div>
+<div class="border-l-4 border-mint-600 pl-4 mb-4">
+  <h3 class="text-md md:text-lg font-medium text-gray-900">{degree}</h3>
+
+  <div class="mb-2">
+    <span class="text-mint-600 font-bold">{institution}</span>
+    <span class="text-sm text-gray-600">| {period}</span>
+  </div>
+
+  <div>
+    <p class="text-sm font-medium text-gray-900 underline my-2">
+      {techno && "Technologies"}
+    </p>
+    {
+      techno && (
+        <ul class="list-disc list-inside flex flex-wrap gap-2">
+          {techno.map((tech: string) => (
+            <li class="text-sm text-gray-600">{tech}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
 </div>

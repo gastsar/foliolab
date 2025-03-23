@@ -8,7 +8,7 @@ image:
   url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80"
   alt: "Un écran affichant du code avec des outils de développement."
 
-tags: ["extensions navigateur", "développement web", "outils", "extensions"]
+tags: ["navigateur", "web", "outils", "extensions"]
 ---
 
 Les extensions de navigateur sont des outils indispensables pour optimiser la productivité des développeurs. Elles offrent des fonctionnalités supplémentaires qui permettent d'améliorer la qualité du code, de tester des sites ou d'analyser la performance d'une application web en un clin d'œil. Voici mes extensions préférées qui m'aident au quotidien dans mon travail de développeur :
