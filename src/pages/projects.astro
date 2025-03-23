@@ -19,6 +19,26 @@ type Project = {
     demoUrl?: string;
   };
 };
+type Proje = {
+  url: string;
+
+  title: string;
+  mission: string;
+  entreprise: string;
+  secteur: string;
+  date: string;
+  imageBg?: {
+    url: string;
+    alt: string;
+  };
+  imageList: string[];
+  tags: string[];
+  technos: string[];
+  status: status;
+  duration: string;
+  repoUrl?: string;
+  demoUrl?: string | "Projet en cours de développement";
+};
 // Récupérer tous les projets de portfolio
 const allProjects: Project[] = Object.values(
   import.meta.glob<Project>("./projects/*.md", { eager: true })

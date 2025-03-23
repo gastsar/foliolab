@@ -1,9 +1,12 @@
 ---
 import Banner from "../Banner.astro";
 import { PAGES } from "../../consts";
+import ThemeIcon from "../ThemeIcon.astro";
 ---
 
-<header class="sticky bg-secondary font-host top-0 z-50 shadow-sm">
+<header
+  class="sticky bg-secondary font-host top-0 z-50 shadow-sm dark:bg-gray-900 dark:shadow-gray-800"
+>
   <div class="mx-auto px-4 py-3 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
@@ -46,7 +49,7 @@ import { PAGES } from "../../consts";
             <li>
               <a
                 href={page.href}
-                class=" font-kanit text-lg font-semibold text-gray-900 dark:text-gray-700  transition-colors"
+                class=" font-kanit text-md font-semibold text-gray-900 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400  transition-colors"
               >
                 {page.title}
               </a>
@@ -65,49 +68,14 @@ import { PAGES } from "../../consts";
 
       <!-- Bouton thème clair/sombre -->
       <!--  <ThemeSelector /> -->
-      <button
-        id="theme-toggle"
-        class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
-        aria-label="Changer de thème"
-      >
-        <!-- Icône soleil (mode clair) -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5 hidden dark:block"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-          ></path>
-        </svg>
-        <!-- Icône lune (mode sombre) -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5 block dark:hidden"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          ></path>
-        </svg>
-      </button>
+      <ThemeIcon />
     </div>
   </div>
 
   <!-- Menu mobile (caché par défaut) -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden z-30 absolute top-32 left-0 w-full bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 animate-fade-in"
+    class="hidden md:hidden z-30 absolute left-0 w-full bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 animate-fade-in"
   >
     <nav class="container mx-auto px-4 py-3">
       <ul class="space-y-3">
@@ -168,14 +136,13 @@ import { PAGES } from "../../consts";
       </div>
     </nav>
   </div>
-  <Banner />
 </header>
 
 <script>
   // Script pour le menu mobile
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
-  const themeToggleMobile = document.getElementById("theme-toggle-mobile"); 
+  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
   const languageSelectorMobile = document.getElementById(
     "language-selector-mobile"
   );
@@ -185,8 +152,8 @@ import { PAGES } from "../../consts";
       mobileMenu.classList.toggle("hidden");
     });
   }
-
-   // Synchroniser le thème pour le bouton mobile
+  /* 
+  // Synchroniser le thème pour le bouton mobile
   if (themeToggleMobile) {
     themeToggleMobile.addEventListener("click", () => {
       if (document.documentElement.classList.contains("dark")) {
@@ -197,7 +164,7 @@ import { PAGES } from "../../consts";
         localStorage.setItem("theme", "dark");
       }
     });
-  } 
+  }
 
   // Synchroniser le sélecteur de langue mobile
   if (languageSelectorMobile) {
@@ -206,5 +173,5 @@ import { PAGES } from "../../consts";
       localStorage.setItem("language", target.value);
       // Dans une application réelle, vous redirigeriez vers la version localisée
     });
-  }
+  } */
 </script>

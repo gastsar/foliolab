@@ -3,45 +3,44 @@ local_backend: true
 logo_url: /logo.svg
 
 backend:
-    name: github
-    branch: main
-    repo: gastsar/foliolab
-    site_domain: 
-    base_url: https://kevinedev-portfolio.netlify.app
-    auth_endpoint: oauth
-    automatic_deployments: true
+  name: github
+  branch: main
+  repo: gastsar/foliolab
+  site_domain:
+  base_url: https://kevinedev-portfolio.netlify.app/
+  auth_endpoint: oauth
+  automatic_deployments: true
 
 media_folder: "src/assets/images"
 public_folder: "@assets/images"
 
 collections:
-    - name: "posts"
-     
-      label: "Blog Posts"
-      folder: "src/content/blog"
-      media_folder: "/src/assets/images/blog"
-      public_folder: "@assets/images/blog"
-      create: true
-      delete: true
-      fields:
-          - name: "title"
-            widget: "string"
-            label: "Post Title"
-         
-          - label: "Description"
-            name: "description"
-            widget: "string"
-           
-          - label: "Publish Date"
-            name: "pubDate"
-            widget: "datetime"
-            format: "YYYY-MM-DD HH:mm"
-           
-          - label: "Image"
-            name: "heroImage"
-            widget: "image"
-           
-          - name: "body"
-            widget: "markdown"
-            label: "Post Body"
-           
+  - name: "posts"
+
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    media_folder: "/src/assets/images/blog"
+    public_folder: "@assets/images/blog"
+    create: true
+    delete: true
+    fields:
+      - name: "title"
+        widget: "string"
+        label: "Post Title"
+
+      - label: "Description"
+        name: "description"
+        widget: "string"
+
+      - label: "Publish Date"
+        name: "pubDate"
+        widget: "datetime"
+        format: "YYYY-MM-DD "
+
+      - label: "Image"
+        name: "heroImage"
+        widget: "image"
+
+      - name: "body"
+        widget: "markdown"
+        label: "Post Body"
