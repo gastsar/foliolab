@@ -1,4 +1,5 @@
 ---
+import BlogPostCard from "@/components/blog/BlogPostCard.astro";
 import { getCollection } from "astro:content";
 import BlogPost from "../components/blog/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
@@ -13,20 +14,43 @@ const allPosts = await getCollection("blog");
     </h1>
 
     <!-- Liste des articles -->
-    <ul class="grid grid-cols-1 gap-6">
-      {
-        allPosts.map((post) => (
-          <BlogPost
-            url={`/posts/${post.id}`}
-            title={post.data.title}
-            date={post.data.pubDate}
-            image={post.data.image.url}
-            author={post.data.author}
-            readTime={post.data.readTime}
-            description={post.data.description}
-          />
-        ))
-      }
-    </ul>
+    <article>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">à la une</h2>
+      <ul class="grid grid-cols-1 gap-6">
+        {
+          allPosts.map((post) => (
+            <BlogPost
+              url={`/posts/${post.id}`}
+              title={post.data.title}
+              date={post.data.pubDate}
+              image={post.data.image.url}
+              author={post.data.author}
+              readTime={post.data.readTime}
+              description={post.data.description}
+            />
+          ))
+        }
+      </ul>
+    </article>
+    <article>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4 uppercase">
+        à lire
+      </h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          allPosts.map((post) => (
+            <BlogPostCard
+              url={`/posts/${post.id}`}
+              title={post.data.title}
+              date={post.data.pubDate}
+              image={post.data.image.url}
+              author={post.data.author}
+              readTime={post.data.readTime}
+              description={post.data.description}
+            />
+          ))
+        }
+      </ul>
+    </article>
   </section>
 </Layout>
