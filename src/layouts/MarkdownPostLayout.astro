@@ -78,7 +78,7 @@ const { frontmatter } = Astro.props;
       role="complementary"
     >
       <div class="bg-white shadow-lg rounded-xl p-6">
-        <h2 class="text-2xl font-semibold mb-4">D'autres articles</h2>
+        <h2 class="text-2xl font-semibold mb-4 dark:text-gray-800">Tags</h2>
         <ul class="space-y-2 flex flex-wrap gap-1">
           {
             frontmatter.tags.map((tag: string) => (
@@ -96,7 +96,7 @@ const { frontmatter } = Astro.props;
       </div>
       <div class="bg-white shadow-lg rounded-xl p-6">
         <h2 class="text-2xl font-semibold mb-4">
-          <span class="text-xl">Abonnez-vous à la</span>
+          <span class="text-xl dark:text-gray-800">Abonnez-vous à la</span>
           <span class="text-mint-600">Newsletter</span>
         </h2>
         <form>
