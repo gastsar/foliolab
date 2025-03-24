@@ -4,11 +4,6 @@ export const skills = [
     category: "Développement Frontend",
     items: [
       {
-        name: "JavaScript",
-        level: 7,
-        expertise: "Intermediate",
-      },
-      {
         name: "TypeScript",
         level: 6,
         expertise: "Intermediate",
@@ -182,39 +177,6 @@ export const skills = [
         name: "DevTools",
         level: 7,
         expertise: "Intermediate",
-      },
-    ],
-  },
-  {
-    category: "Compétences Transversales",
-    items: [
-      {
-        name: "Communication",
-        level: 7,
-      },
-      {
-        name: "Collaboration",
-        level: 7,
-      },
-      {
-        name: "Esprit d'équipe",
-        level: 8,
-      },
-      {
-        name: "Résolution de problèmes",
-        level: 7,
-      },
-      {
-        name: "Adaptabilité",
-        level: 8,
-      },
-      {
-        name: "Autonomie",
-        level: 8,
-      },
-      {
-        name: "Rigueur",
-        level: 7,
       },
     ],
   },
