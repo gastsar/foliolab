@@ -1,0 +1,135 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+// Informations détaillées des Conditions Générales d'Utilisation
+const infoCgu = {
+  title: "Conditions Générales d'Utilisation",
+  version: "1.0",
+  date: "2024-03-24",
+  lastUpdated: "2024-03-24",
+  company: {
+    name: "TeloLabz - Entreprise Individuelle",
+    legalForm: "Société par Actions Simplifiée",
+    capitalSocial: "0 €",
+    siret: "123 456 789 00010",
+    registration: "Registre du Commerce et des Sociétés de Paris",
+    headquartersAddress: {
+      street: "11 Place de Martigues",
+      zipCode: "31500",
+      city: "Toulouse",
+      country: "France",
+    },
+    contactEmail: "yvesnarsonkevine@gmail.com",
+    phoneNumber: "+33 (0)6 13 94 26 62",
+    activity: "Développement de solutions numériques innovantes",
+    websiteUrl: "https://www.votre-entreprise.fr",
+  },
+  site: "https://www.votre-entreprise.fr",
+  sections: [
+    {
+      title: "1. Objet",
+      content:
+        "Les présentes Conditions Générales d'Utilisation (CGU) définissent les termes et conditions d'accès et d'utilisation des services proposés par {company.name} sur son site internet {site}.",
+    },
+    {
+      title: "2. Acceptation des Conditions",
+      content:
+        "L'accès et l'utilisation de nos services impliquent l'acceptation pleine et entière des présentes CGU. Tout utilisateur reconnaît avoir pris connaissance des conditions d'utilisation et les accepte sans réserve.",
+    },
+    {
+      title: "3. Modifications des Conditions",
+      content:
+        "L'entreprise se réserve le droit de modifier à tout moment les présentes CGU. Les modifications seront publiées sur le site et entreront en vigueur immédiatement. L'utilisation continue de nos services après modification vaut acceptation des nouvelles conditions.",
+    },
+    {
+      title: "4. Accès au Site",
+      content:
+        "Le site est accessible 24h/24 et 7j/7, sous réserve d'interruptions pour maintenance, mises à jour techniques ou cas de force majeure. L'entreprise ne peut garantir une accessibilité continue ou une sécurité absolue du site.",
+    },
+    {
+      title: "5. Propriété Intellectuelle",
+      content:
+        "Tous les contenus présents sur le site (textes, images, graphiques, logos, etc.) sont la propriété exclusive de l'entreprise et sont protégés par les lois sur la propriété intellectuelle. Toute reproduction ou utilisation sans autorisation est strictement interdite.",
+    },
+    {
+      title: "6. Responsabilité",
+      content:
+        "L'entreprise décline toute responsabilité concernant les dommages directs ou indirects résultant de l'utilisation de ses services. Les informations fournies sont données à titre indicatif et peuvent être modifiées sans préavis.",
+    },
+    {
+      title: "7. Protection des Données Personnelles",
+      content:
+        "Conformément à la loi Informatique et Libertés et au RGPD, l'utilisateur dispose d'un droit d'accès, de modification, de rectification et de suppression des données personnelles le concernant. Pour exercer ces droits, contactez-nous à l'adresse {company.contactEmail}.",
+    },
+    {
+      title: "8. Politique de Confidentialité",
+      content:
+        "Les données collectées sont destinées à améliorer nos services et ne sont en aucun cas vendues ou partagées avec des tiers sans votre consentement explicite.",
+    },
+  ],
+};
+---
+
+<Layout title="Conditions Générales d'Utilisation">
+  <section
+    class="max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl"
+  >
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100">
+      {infoCgu.title}
+    </h1>
+    <p class="text-gray-600 dark:text-gray-300 mt-2">
+      Version : <span class="font-semibold">{infoCgu.version}</span>
+      <br />
+      Dernière mise à jour : <span class="font-semibold"
+        >{infoCgu.lastUpdated}</span
+      >
+    </p>
+
+    <div class="mt-6">
+      <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Informations légales
+      </h2>
+      <div class="text-gray-600 dark:text-gray-300 mt-2">
+        <p><strong>Raison sociale :</strong> {infoCgu.company.name}</p>
+        <p><strong>Forme juridique :</strong> {infoCgu.company.legalForm}</p>
+        <p><strong>Capital social :</strong> {infoCgu.company.capitalSocial}</p>
+        <p><strong>SIRET :</strong> {infoCgu.company.siret}</p>
+        <p><strong>Immatriculation :</strong> {infoCgu.company.registration}</p>
+        <p>
+          <strong>Siège social :</strong>
+          {infoCgu.company.headquartersAddress.street}, {
+            infoCgu.company.headquartersAddress.zipCode
+          }
+          {infoCgu.company.headquartersAddress.city}, {
+            infoCgu.company.headquartersAddress.country
+          }
+        </p>
+        <p>
+          <strong>Contact :</strong>
+          {infoCgu.company.contactEmail} - {infoCgu.company.phoneNumber}
+        </p>
+      </div>
+    </div>
+
+    {
+      infoCgu.sections.map((section) => (
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            {section.title}
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">
+            {section.content
+              .replace("{company.name}", infoCgu.company.name)
+              .replace("{site}", infoCgu.site)
+              .replace("{company.contactEmail}", infoCgu.company.contactEmail)}
+          </p>
+        </div>
+      ))
+    }
+
+    <div class="mt-6 text-center text-gray-500 dark:text-gray-400 text-sm">
+      © {new Date().getFullYear()}
+      {infoCgu.company.name}. Tous droits réservés.
+    </div>
+  </section>
+</Layout>

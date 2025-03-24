@@ -1,0 +1,159 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+// Informations de la Politique de Confidentialité
+const politiqueConfidentialite = {
+  title: "Politique de Confidentialité",
+  lastUpdated: "2024-03-25",
+  company: {
+    name: "Votre Entreprise",
+    legalForm: "Société [Forme Juridique]",
+    registration: {
+      city: "Ville d'immatriculation",
+      number: "Numéro d'immatriculation",
+    },
+    headquarters: {
+      address: "Adresse complète",
+      postalCode: "Code Postal",
+      city: "VILLE",
+    },
+    contact: {
+      phone: "Numéro de téléphone",
+      email: "adresse-contact@entreprise.fr",
+    },
+  },
+  dataProtectionOfficer: {
+    fullName: "Prénom NOM",
+    address: "Adresse de domicile",
+    contact: {
+      phone: "Numéro de téléphone",
+      email: "delegue-protection@entreprise.fr",
+    },
+  },
+  sections: [
+    {
+      title: "Article 1 - Préambule",
+      content:
+        "La présente Politique de confidentialité s'applique au site internet {site}. Elle complète les Mentions Légales et les Conditions Générales d'Utilisation du site internet. En poursuivant la navigation sur notre site, vous consentez à notre politique de confidentialité.",
+    },
+    {
+      title: "Article 2 - Responsable de Traitement",
+      content:
+        "Vos données personnelles sont collectées et traitées par {company.name}, {company.legalForm}, immatriculée au RCS de {company.registration.city} sous le numéro {company.registration.number}.",
+    },
+    {
+      title: "Article 3 - Informations Collectées",
+      content:
+        "Nous collectons les données suivantes : [Liste détaillée des données collectées]. Ces données sont recueillies via : [Liste des moyens de collecte].",
+    },
+    {
+      title: "Article 4 - Finalités du Traitement",
+      content:
+        "Nous traitons vos données pour les finalités suivantes : [Liste détaillée des finalités]. Le traitement respecte les principes de licéité, loyauté et transparence conformément au RGPD.",
+    },
+    {
+      title: "Article 5 - Transmission des Données",
+      content:
+        "Les données personnelles collectées ne sont pas partagées avec des tiers sans votre consentement exprès et préalable.",
+    },
+    {
+      title: "Article 6 - Transferts Internationaux",
+      content:
+        "Les données peuvent être traitées, stockées et transférées dans les pays suivants : [Liste des pays].",
+    },
+    {
+      title: "Article 7 - Durée de Conservation",
+      content:
+        "Vos données sont conservées pour une durée de [X] mois/années. L'acceptation de la politique de cookies est valable pour [Y] mois.",
+    },
+    {
+      title: "Article 8 - Utilisation des Cookies",
+      content:
+        "Notre site utilise des cookies. Un cookie est un petit fichier enregistré sur votre disque dur lors de la visite d'un site. Les cookies utilisés sont : [Liste détaillée des types de cookies].",
+    },
+    {
+      title: "Article 9 - Vos Droits",
+      content:
+        "Conformément à la loi Informatique et Libertés et au RGPD, vous disposez des droits suivants : information, accès, rectification, effacement, limitation, opposition, portabilité et réclamation auprès de la CNIL.",
+    },
+    {
+      title: "Article 10 - Mise à Jour",
+      content:
+        "Cette Politique de Confidentialité peut être modifiée pour se conformer aux dispositions légales. Nous vous invitons à la consulter régulièrement.",
+    },
+  ],
+};
+---
+
+<Layout title="Politique de Confidentialité">
+  <section
+    class="max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl"
+  >
+    <h1 class="text-3xl font-bold text-gray-800">
+      {politiqueConfidentialite.title}
+    </h1>
+    <p class="text-gray-600 dark:text-gray-300 mt-2">
+      Dernière mise à jour : <span class="font-semibold"
+        >{politiqueConfidentialite.lastUpdated}</span
+      >
+    </p>
+
+    <div class="mt-6">
+      <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Informations Légales
+      </h2>
+      <div class="text-gray-600 dark:text-gray-300 mt-2">
+        <p>
+          <strong>Raison sociale :</strong>
+          {politiqueConfidentialite.company.name}
+        </p>
+        <p>
+          <strong>Forme juridique :</strong>
+          {politiqueConfidentialite.company.legalForm}
+        </p>
+        <p>
+          <strong>Immatriculation :</strong> RCS {
+            politiqueConfidentialite.company.registration.city
+          }, {politiqueConfidentialite.company.registration.number}
+        </p>
+        <p>
+          <strong>Contact :</strong>
+          {politiqueConfidentialite.company.contact.email} - {
+            politiqueConfidentialite.company.contact.phone
+          }
+        </p>
+      </div>
+    </div>
+
+    {
+      politiqueConfidentialite.sections.map((section) => (
+        <div class="mt-6">
+          <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200">
+            {section.title}
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">
+            {section.content
+              .replace("{company.name}", politiqueConfidentialite.company.name)
+              .replace(
+                "{company.legalForm}",
+                politiqueConfidentialite.company.legalForm
+              )
+              .replace(
+                "{company.registration.city}",
+                politiqueConfidentialite.company.registration.city
+              )
+              .replace(
+                "{company.registration.number}",
+                politiqueConfidentialite.company.registration.number
+              )}
+          </p>
+        </div>
+      ))
+    }
+
+    <div class="mt-6 text-center text-gray-500 text-sm">
+      © {new Date().getFullYear()}
+      {politiqueConfidentialite.company.name}. Tous droits réservés.
+    </div>
+  </section>
+</Layout>
