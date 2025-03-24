@@ -9,12 +9,12 @@ import "../styles/markdown.css";
 const { title, description = "Portfolio " } = Astro.props;
 ---
 
-<html lang="fr">
+<html lang="fr" class="scroll-smooth md:scroll-auto">
   <head>
     <BaseHead title={title} description={description} />
   </head>
   <body
-    class="min-h-screen font-host flex flex-col bg-secondary text-gray-800 dark:bg-gray-800 dark:text-gray-200 transition-colors duration-300"
+    class="min-h-screen font-host flex flex-col bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors duration-300"
   >
     <Banner />
     <Header />
