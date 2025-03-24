@@ -21,7 +21,7 @@ const {
 ---
 
 <li
-  class="group bg-white rounded-xl overflow-hidden relative shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-100 cursor-pointer"
+  class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md shadow-gray-600/10 dark:shadow-gray-900 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-100 cursor-pointer"
 >
   <a href={url}>
     <div class="flex flex-col mb-6">
@@ -40,17 +40,17 @@ const {
             {title}
           </h2>
           <p
-            class="flex items-center text-sm text-gray-500 mb-3 justify-between sm:justify-start"
+            class="flex items-center text-sm text-gray-500 dark:text-gray-200 mb-3 justify-between sm:justify-start"
           >
             <span>{author}</span>
             <span class="mx-2 hidden sm:inline">•</span>
             <span>{readTime} de lecture</span>
           </p>
           <div class="line-clamp-3">
-            <p class="text-gray-600">{description}</p>
+            <p class="text-gray-600 dark:text-gray-100">{description}</p>
           </div>
         </div>
-        <span class="text-sm text-gray-500 text-right mt-4"
+        <span class="text-sm text-gray-500 dark:text-gray-200 text-right mt-4"
           >{new Date(date).toLocaleDateString("fr-FR")}</span
         >
       </div>
