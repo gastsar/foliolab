@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+
+const { src, alt } = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  class="w-full h-40 object-cover transition-transform duration-300 rounded-lg"
+  inferSize={true}
+  loading="eager"
+/>

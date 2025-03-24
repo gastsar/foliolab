@@ -2,3 +2,6 @@
 # Syntaxe complète : https://developers.google.com/search/docs/advanced/robots/create-robots-txt
 User-agent: *
 Allow: /
+
+
+Sitemap: https://<VOTRE SITE>/sitemap-index.xml
