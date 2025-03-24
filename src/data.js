@@ -5,18 +5,6 @@ export const skills = [
     icon: "fa-solid fa-code",
     items: [
       {
-        name: "HTML",
-        level: 8,
-        icon: "fa-brands fa-html5",
-        expertise: "Advanced",
-      },
-      {
-        name: "CSS",
-        level: 8,
-        icon: "fa-brands fa-css3-alt",
-        expertise: "Advanced",
-      },
-      {
         name: "JavaScript",
         level: 7,
         icon: "fa-brands fa-js",
@@ -185,12 +173,6 @@ export const skills = [
         expertise: "Beginner",
       },
       {
-        name: "UI/UX Design",
-        level: 6,
-        icon: "fa-solid fa-lightbulb",
-        expertise: "Intermediate",
-      },
-      {
         name: "Design System",
         level: 6,
         icon: "fa-solid fa-palette",
@@ -206,6 +188,12 @@ export const skills = [
       {
         name: "VS Code",
         level: 8,
+        icon: "fa-solid fa-laptop-code",
+        expertise: "Advanced",
+      },
+      {
+        name: "Cursor",
+        level: 6,
         icon: "fa-solid fa-laptop-code",
         expertise: "Advanced",
       },
