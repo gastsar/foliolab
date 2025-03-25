@@ -1,0 +1,31 @@
+---
+import Layout from "./Layout.astro";
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <section class="p-6 flex gap-6 md:flex-row bg-white shadow-lg rounded-xl">
+    <nav class="w-1/8 h-fit hidden md:block mb-6 sticky top-20">
+      <ul class="space-y-2">
+        <li class="font-bold mb-2">
+          <a href="/mentions-legales">Mentions L&eacute;gales</a>
+        </li>
+        <li class="font-bold mb-2">
+          <a href="/politique-confidentialite"
+            >Politique de Confidentialit&eacute;</a
+          >
+        </li>
+        <li class="font-bold mb-2">
+          <a href="/politique-cookies">Politique de Cookies</a>
+        </li>
+        <li class="font-bold mb-2">
+          <a href="/gestion-cookies">Gestion des Cookies</a>
+        </li>
+      </ul>
+    </nav>
+    <article class="w-full">
+      <slot />
+    </article>
+  </section>
+</Layout>

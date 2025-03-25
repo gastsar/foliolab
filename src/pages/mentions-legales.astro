@@ -1,0 +1,157 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import LayoutLegal from "@/layouts/LayoutLegal.astro";
+
+// Configuration des Mentions Légales
+const mentionsLegales = {
+  title: "Mentions Légales",
+  lastUpdated: "2024-03-25",
+  company: {
+    name: "Nom de votre Entreprise",
+    legalForm: "Forme juridique (SARL, SAS, etc.)",
+    capitalSocial: "Montant du capital social",
+    siret: "Numéro SIRET",
+    rcs: {
+      city: "Ville d'immatriculation",
+      number: "Numéro RCS",
+    },
+    contact: {
+      email: "contact@entreprise.fr",
+      phone: "+33 (0)1 23 45 67 89",
+      address: {
+        street: "Adresse complète",
+        postalCode: "Code Postal",
+        city: "VILLE",
+      },
+    },
+  },
+  website: {
+    url: "https://www.votre-site.fr",
+    host: {
+      name: "Nom de l'hébergeur",
+      address: "Adresse de l'hébergeur",
+      contact: "Coordonnées de l'hébergeur",
+    },
+  },
+  sections: [
+    {
+      title: "1. Identification de l'Éditeur",
+      content:
+        "Le site {site} est édité par {company.name}, {company.legalForm} au capital de {company.capitalSocial}, immatriculée au RCS de {company.rcs.city} sous le numéro {company.rcs.number}.",
+    },
+    {
+      title: "2. Coordonnées",
+      content:
+        "Siège social : {company.contact.address.street}, {company.contact.address.postalCode} {company.contact.address.city}\nTéléphone : {company.contact.phone}\nEmail : {company.contact.email}",
+    },
+    {
+      title: "3. Directeur de la Publication",
+      content:
+        "Le Directeur de la publication est [Nom du Directeur de la Publication].",
+    },
+    {
+      title: "4. Hébergement",
+      content:
+        "Le site {site} est hébergé par {website.host.name}, dont le siège social est situé à {website.host.address}. Contact : {website.host.contact}",
+    },
+    {
+      title: "5. Propriété Intellectuelle",
+      content:
+        "L'ensemble des éléments composant le site {site} (textes, images, graphiques, logo, icônes, sons, logiciels, etc.) sont la propriété exclusive de {company.name}, protégés par les lois relatives aux droits de propriété intellectuelle.",
+    },
+    {
+      title: "6. Données Personnelles",
+      content:
+        "Conformément à la loi Informatique et Libertés et au RGPD, vous disposez de droits sur vos données personnelles. Pour plus d'informations, consultez notre Politique de Confidentialité.",
+    },
+    {
+      title: "7. Cookies",
+      content:
+        "Pour comprendre l'utilisation des cookies sur notre site, veuillez consulter notre Politique de Cookies.",
+    },
+    {
+      title: "8. Responsabilité",
+      content:
+        "Les informations diffusées sur le site sont fournies à titre indicatif. {company.name} ne peut être tenue responsable des erreurs, de l'absence de disponibilité des informations ou de leur mise à jour.",
+    },
+    {
+      title: "9. Liens Hypertextes",
+      content:
+        "Les liens hypertextes mis en place sur le site peuvent conduire vers des sites tiers. Nous déclinons toute responsabilité quant au contenu de ces sites.",
+    },
+  ],
+};
+---
+
+<LayoutLegal title="Mentions Légales">
+  <section class="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-xl">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">
+      {mentionsLegales.title}
+    </h1>
+
+    <p class="text-gray-600 mb-6">
+      Dernière mise à jour : <span class="font-semibold"
+        >{mentionsLegales.lastUpdated}</span
+      >
+    </p>
+
+    {
+      mentionsLegales.sections.map((section) => (
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-700 mb-3">
+            {section.title}
+          </h2>
+          <p class="text-gray-600">
+            {section.content
+              .replace("{site}", mentionsLegales.website.url)
+              .replace("{company.name}", mentionsLegales.company.name)
+              .replace("{company.legalForm}", mentionsLegales.company.legalForm)
+              .replace(
+                "{company.capitalSocial}",
+                mentionsLegales.company.capitalSocial
+              )
+              .replace("{company.rcs.city}", mentionsLegales.company.rcs.city)
+              .replace(
+                "{company.rcs.number}",
+                mentionsLegales.company.rcs.number
+              )
+              .replace(
+                "{company.contact.address.street}",
+                mentionsLegales.company.contact.address.street
+              )
+              .replace(
+                "{company.contact.address.postalCode}",
+                mentionsLegales.company.contact.address.postalCode
+              )
+              .replace(
+                "{company.contact.address.city}",
+                mentionsLegales.company.contact.address.city
+              )
+              .replace(
+                "{company.contact.phone}",
+                mentionsLegales.company.contact.phone
+              )
+              .replace(
+                "{company.contact.email}",
+                mentionsLegales.company.contact.email
+              )
+              .replace("{website.host.name}", mentionsLegales.website.host.name)
+              .replace(
+                "{website.host.address}",
+                mentionsLegales.website.host.address
+              )
+              .replace(
+                "{website.host.contact}",
+                mentionsLegales.website.host.contact
+              )}
+          </p>
+        </div>
+      ))
+    }
+
+    <div class="mt-6 text-center text-gray-500 text-sm">
+      © {new Date().getFullYear()}
+      {mentionsLegales.company.name}. Tous droits réservés.
+    </div>
+  </section>
+</LayoutLegal>
