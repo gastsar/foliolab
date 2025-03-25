@@ -18,8 +18,12 @@ import ThemeIcon from "../ThemeIcon.astro";
       <span class="text-xl font-bold dark:text-white">Portfolio</span>
     </a>
 
-    <!-- Navigation pour mobile (menu hamburger) -->
-    <div class="md:hidden">
+    <!-- Mobile Menu Toggle -->
+    <div class="md:hidden flex items-center space-x-4">
+      <!-- Theme Toggle for Mobile -->
+      <ThemeIcon />
+
+      <!-- Hamburger Menu Button -->
       <button
         id="mobile-menu-button"
         aria-label="Menu"
@@ -41,7 +45,7 @@ import ThemeIcon from "../ThemeIcon.astro";
       </button>
     </div>
 
-    <!-- Navigation pour desktop -->
+    <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-8">
       <ul class="flex space-x-6">
         {
@@ -49,7 +53,7 @@ import ThemeIcon from "../ThemeIcon.astro";
             <li>
               <a
                 href={page.href}
-                class=" font-kanit text-md font-semibold text-gray-900 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400  transition-colors"
+                class="font-kanit text-md font-semibold text-gray-900 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
                 {page.title}
               </a>
@@ -58,36 +62,58 @@ import ThemeIcon from "../ThemeIcon.astro";
         }
       </ul>
     </nav>
+
+    <!-- Desktop Actions -->
     <div class="hidden md:flex items-center space-x-4">
-      <!-- CTO -->
+      <!-- CTA Button -->
       <button
         class="bg-mint-600 text-white px-4 py-2 rounded-full font-semibold cursor-pointer hover:bg-mint-900 transition-colors"
         data-cal-link="kevine-yves/entretien-pour-alternance"
         data-cal-namespace="entretien-pour-alternance"
         data-cal-config='{"layout":"month_view"}'
       >
-        Prenons contact</button
-      >
+        Prenons contact
+      </button>
 
-      <!-- Bouton thème clair/sombre -->
-      <!--  <ThemeSelector /> -->
+      <!-- Desktop Theme Toggle -->
       <ThemeIcon />
     </div>
   </div>
 
-  <!-- Menu mobile (caché par défaut) -->
+  <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden z-30 absolute left-0 w-full bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 animate-fade-in"
+    class="hidden md:hidden fixed inset-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm"
   >
-    <nav class="container mx-auto px-4 py-3">
-      <ul class="space-y-3">
+    <nav class="container mx-auto px-4 py-6 h-full">
+      <div class="flex justify-end mb-6">
+        <button
+          id="mobile-menu-close"
+          class="text-gray-700 dark:text-gray-300 p-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="space-y-4">
         {
           PAGES.map((link) => (
             <li>
               <a
                 href={link.href}
-                class="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2"
+                class="block text-xl text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-3"
               >
                 {link.title}
               </a>
@@ -97,49 +123,41 @@ import ThemeIcon from "../ThemeIcon.astro";
       </ul>
 
       <div
-        class="flex items-center justify-end mt-4 pt-4 border-t border-gray-200 dark:border-gray-700"
+        class="absolute bottom-0 left-0 w-full px-4 py-6 border-t border-gray-200 dark:border-gray-700"
       >
-        <!-- Bouton thème clair/sombre (mobile) -->
-        <ThemeIcon />
+        <div class="flex items-center justify-center">
+          <button
+            class="bg-mint-600 text-white px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-mint-900 transition-colors w-full"
+            data-cal-link="kevine-yves/entretien-pour-alternance"
+            data-cal-namespace="entretien-pour-alternance"
+            data-cal-config='{"layout":"month_view"}'
+          >
+            Prenons contact
+          </button>
+        </div>
       </div>
     </nav>
   </div>
 </header>
 
 <script>
-  // Script pour le menu mobile
+  // Mobile Menu Toggle Script
   const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenuCloseButton = document.getElementById("mobile-menu-close");
   const mobileMenu = document.getElementById("mobile-menu");
-  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
-  const languageSelectorMobile = document.getElementById(
-    "language-selector-mobile"
-  );
 
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  }
-  /* 
-  // Synchroniser le thème pour le bouton mobile
-  if (themeToggleMobile) {
-    themeToggleMobile.addEventListener("click", () => {
-      if (document.documentElement.classList.contains("dark")) {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      } else {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      }
-    });
+  function toggleMobileMenu() {
+    mobileMenu?.classList.toggle("hidden");
+    document.body.classList.toggle("overflow-hidden");
   }
 
-  // Synchroniser le sélecteur de langue mobile
-  if (languageSelectorMobile) {
-    languageSelectorMobile.addEventListener("change", (e) => {
-      const target = e.target as HTMLSelectElement;
-      localStorage.setItem("language", target.value);
-      // Dans une application réelle, vous redirigeriez vers la version localisée
-    });
-  } */
+  // Event Listeners
+  mobileMenuButton?.addEventListener("click", toggleMobileMenu);
+  mobileMenuCloseButton?.addEventListener("click", toggleMobileMenu);
+
+  // Close mobile menu when a link is clicked
+  const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", toggleMobileMenu);
+  });
 </script>
