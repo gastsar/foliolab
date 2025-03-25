@@ -1,0 +1,145 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import LayoutLegal from "@/layouts/LayoutLegal.astro";
+
+// Configuration de la Politique de Cookies
+const politiqueCookies = {
+  title: "Politique de Cookies",
+  lastUpdated: "2025-05-15",
+  sections: [
+    {
+      title: "Qu'est-ce qu'un cookie ?",
+      content:
+        "Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de votre visite sur notre site. Il permet de stocker des informations relatives à votre navigation et de vous offrir une expérience personnalisée.",
+    },
+    {
+      title: "Les cookies que nous utilisons",
+      subsections: [
+        {
+          name: "Cookies essentiels",
+          description:
+            "Ces cookies sont nécessaires au fonctionnement du site. Ils vous permettent d'utiliser les principales fonctionnalités du site (par exemple, l'accès à votre compte). Sans ces cookies, vous ne pourrez pas utiliser le site normalement.",
+        },
+        {
+          name: "Cookies fonctionnels",
+          description:
+            "Ces cookies permettent de personnaliser votre expérience sur notre site en mémorisant vos préférences (comme le choix de la langue, le thème clair/sombre).",
+        },
+        {
+          name: "Cookies analytiques",
+          description:
+            "Ces cookies nous permettent de comprendre comment les visiteurs interagissent avec notre site en recueillant et en rapportant des informations de manière anonyme. Ils nous aident à améliorer le fonctionnement de notre site.",
+        },
+        {
+          name: "Cookies de marketing",
+          description:
+            "Ces cookies sont utilisés pour suivre les visiteurs sur les sites web. Leur finalité est d'afficher des publicités qui sont pertinentes et intéressantes pour l'utilisateur, et donc plus précieuses pour les éditeurs et les annonceurs tiers.",
+        },
+      ],
+    },
+    {
+      title: "Durée de conservation des cookies",
+      content:
+        "Les cookies que nous utilisons ont une durée de vie variable :\n\n- Cookies de session : ils sont temporaires et sont supprimés lorsque vous fermez votre navigateur\n- Cookies persistants : ils restent sur votre appareil jusqu'à leur expiration ou jusqu'à ce que vous les supprimiez manuellement",
+    },
+    {
+      title: "Comment gérer les cookies ?",
+      content:
+        "Vous pouvez à tout moment choisir de désactiver ces cookies. Votre navigateur peut également être paramétré pour vous signaler les cookies qui sont déposés dans votre terminal et vous demander de les accepter ou non.",
+    },
+    {
+      title: "Paramétrer votre navigateur",
+      content:
+        "Vous pouvez configurer votre navigateur pour accepter ou refuser tous les cookies, être averti quand un cookie est émis, connaître sa durée de validité et son contenu, ainsi que supprimer vos cookies périodiquement.",
+      links: [
+        {
+          name: "Chrome",
+          url: "https://support.google.com/chrome/answer/95647",
+        },
+        {
+          name: "Firefox",
+          url: "https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences",
+        },
+        {
+          name: "Safari",
+          url: "https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac",
+        },
+        {
+          name: "Edge",
+          url: "https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09",
+        },
+      ],
+    },
+    {
+      title: "Conséquences du refus des cookies",
+      content:
+        "Si vous refusez l'enregistrement de cookies, ou si vous supprimez ceux qui sont enregistrés, vous ne pourrez plus bénéficier d'un certain nombre de fonctionnalités qui peuvent être nécessaires pour naviguer dans certains espaces de notre site. Tel serait le cas si vous tentiez d'accéder à nos contenus ou services qui nécessitent de vous identifier. Tel serait également le cas lorsque nous ne pourrions pas reconnaître, à des fins de compatibilité technique, le type de navigateur utilisé par votre terminal, ses paramètres de langue et d'affichage ou le pays depuis lequel votre terminal semble connecté à Internet.",
+    },
+    {
+      title: "Mise à jour de la politique de cookies",
+      content:
+        "Nous nous réservons le droit de modifier cette politique de cookies à tout moment. Nous vous encourageons à consulter régulièrement cette page pour rester informé des mises à jour.",
+    },
+  ],
+};
+---
+
+<LayoutLegal title="Politique de Cookies">
+  <section class="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-xl">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">
+      {politiqueCookies.title}
+    </h1>
+
+    <p class="text-gray-600 mb-6">
+      Dernière mise à jour : <span class="font-semibold"
+        >{politiqueCookies.lastUpdated}</span
+      >
+    </p>
+
+    {
+      politiqueCookies.sections.map((section, index) => (
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-700 mb-3">
+            {section.title}
+          </h2>
+
+          {section.content && (
+            <p class="text-gray-600 mb-3">{section.content}</p>
+          )}
+
+          {section.subsections &&
+            section.subsections.map((subsection) => (
+              <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">
+                  {subsection.name}
+                </h3>
+                <p class="text-gray-500">{subsection.description}</p>
+              </div>
+            ))}
+
+          {section.links && (
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold text-gray-600 mb-2">
+                Liens utiles
+              </h3>
+              <ul class="list-disc list-inside">
+                {section.links.map((link) => (
+                  <li>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-blue-600 hover:underline"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </section>
+</LayoutLegal>
