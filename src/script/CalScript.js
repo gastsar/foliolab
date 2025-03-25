@@ -43,7 +43,7 @@ const theme = isDarkMode ? "dark" : "light";
 
 Cal.ns["entretien-pour-alternance"]("ui", {
   cssVarsPerTheme: {
-    light: { "cal-brand": "#d50000" },
+    light: { "cal-brand": "#45bba5" },
     dark: { "cal-brand": "#fafafa" },
   },
   hideEventTypeDetails: false,
