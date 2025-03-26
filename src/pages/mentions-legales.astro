@@ -1,5 +1,4 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import LayoutLegal from "@/layouts/LayoutLegal.astro";
 
 // Configuration des Mentions Légales
@@ -7,37 +6,37 @@ const mentionsLegales = {
   title: "Mentions Légales",
   lastUpdated: "2024-03-25",
   company: {
-    name: "Nom de votre Entreprise",
-    legalForm: "Forme juridique (SARL, SAS, etc.)",
-    capitalSocial: "Montant du capital social",
-    siret: "Numéro SIRET",
+    name: "TeloLabz",
+    legalForm: "Entrepreneur individuel",
+    capitalSocial: "0 €",
+    siret: "94060059600016",
     rcs: {
-      city: "Ville d'immatriculation",
-      number: "Numéro RCS",
+      city: "******************",
+      number: "*******",
     },
     contact: {
-      email: "contact@entreprise.fr",
-      phone: "+33 (0)1 23 45 67 89",
+      email: "yvesnarsonkevine@gmail.com",
+      phone: "+33 (0)6 13 94 26 62",
       address: {
-        street: "Adresse complète",
-        postalCode: "Code Postal",
-        city: "VILLE",
+        street: "11 Place de Martigues",
+        postalCode: "31500",
+        city: "Toulouse",
       },
     },
   },
   website: {
-    url: "https://www.votre-site.fr",
+    url: "https://www.yves-narsonkevine.fr",
     host: {
-      name: "Nom de l'hébergeur",
-      address: "Adresse de l'hébergeur",
-      contact: "Coordonnées de l'hébergeur",
+      name: "Netifly",
+      address: "******************",
+      contact: "******************",
     },
   },
   sections: [
     {
       title: "1. Identification de l'Éditeur",
       content:
-        "Le site {site} est édité par {company.name}, {company.legalForm} au capital de {company.capitalSocial}, immatriculée au RCS de {company.rcs.city} sous le numéro {company.rcs.number}.",
+        "Le site {site} est édité par {company.name}, {company.legalForm} au capital de {company.capitalSocial}",
     },
     {
       title: "2. Coordonnées",
@@ -84,12 +83,14 @@ const mentionsLegales = {
 ---
 
 <LayoutLegal title="Mentions Légales">
-  <section class="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-xl">
-    <h1 class="text-3xl font-bold text-gray-800 mb-4">
+  <section
+    class="max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl"
+  >
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">
       {mentionsLegales.title}
     </h1>
 
-    <p class="text-gray-600 mb-6">
+    <p class="text-gray-600 dark:text-gray-300 mb-6">
       Dernière mise à jour : <span class="font-semibold"
         >{mentionsLegales.lastUpdated}</span
       >
@@ -98,10 +99,10 @@ const mentionsLegales = {
     {
       mentionsLegales.sections.map((section) => (
         <div class="mb-6">
-          <h2 class="text-2xl font-semibold text-gray-700 mb-3">
+          <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200  mb-3">
             {section.title}
           </h2>
-          <p class="text-gray-600">
+          <p class="text-gray-600 dark:text-gray-300">
             {section.content
               .replace("{site}", mentionsLegales.website.url)
               .replace("{company.name}", mentionsLegales.company.name)
