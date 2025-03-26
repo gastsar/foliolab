@@ -1,7 +1,9 @@
 ---
 import Banner from "../Banner.astro";
 import { PAGES } from "../../consts";
-import ThemeIcon from "../ThemeIcon.astro";
+import logoTelo from "../../assets/test.svg";
+import ThemeToggle from "../ThemeToggle.astro";
+import { Image } from "astro:assets";
 ---
 
 <header
@@ -10,42 +12,17 @@ import ThemeIcon from "../ThemeIcon.astro";
   <div class="mx-auto px-4 py-3 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
-      <div
-        class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-xl"
-      >
-        P
-      </div>
-      <span class="text-xl font-bold dark:text-white">Portfolio</span>
+      <Image
+        src={logoTelo}
+        alt="Logo"
+        class="object-cover"
+        width={200}
+        height={10}
+        loading="eager"
+      />
     </a>
 
-    <!-- Mobile Menu Toggle -->
-    <div class="md:hidden flex items-center space-x-4">
-      <!-- Theme Toggle for Mobile -->
-      <ThemeIcon />
-
-      <!-- Hamburger Menu Button -->
-      <button
-        id="mobile-menu-button"
-        aria-label="Menu"
-        class="text-gray-700 dark:text-gray-300"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Desktop Navigation -->
+    <!-- Navigation Desktop -->
     <nav class="hidden md:flex items-center space-x-8">
       <ul class="flex space-x-6">
         {
@@ -63,11 +40,11 @@ import ThemeIcon from "../ThemeIcon.astro";
       </ul>
     </nav>
 
-    <!-- Desktop Actions -->
-    <div class="hidden md:flex items-center space-x-4">
-      <!-- CTA Button -->
+    <!-- Actions : Bouton contact (desktop), ThemeToggle (unique) et Menu Hamburger (mobile) -->
+    <div class="flex items-center space-x-4">
+      <!-- Bouton contact pour desktop -->
       <button
-        class="bg-mint-600 text-white px-4 py-2 rounded-full font-semibold cursor-pointer hover:bg-mint-900 transition-colors"
+        class="hidden md:block bg-mint-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-mint-900 transition-colors"
         data-cal-link="kevine-yves/entretien-pour-alternance"
         data-cal-namespace="entretien-pour-alternance"
         data-cal-config='{"layout":"month_view"}'
@@ -75,17 +52,38 @@ import ThemeIcon from "../ThemeIcon.astro";
         Prenons contact
       </button>
 
-      <!-- Desktop Theme Toggle -->
-      <ThemeIcon />
+      <!-- Instance unique de ThemeToggle -->
+      <ThemeToggle />
+
+      <!-- Menu Hamburger pour mobile -->
+      <button
+        id="mobile-menu-button"
+        aria-label="Menu"
+        class="md:hidden text-gray-700 dark:text-gray-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
   </div>
 
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden fixed inset-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm"
+    class="hidden fixed inset-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm"
   >
-    <nav class="container mx-auto px-4 py-6 h-full">
+    <nav class="container mx-auto px-4 py-6 h-full relative">
       <div class="flex justify-end mb-6">
         <button
           id="mobile-menu-close"
@@ -122,26 +120,25 @@ import ThemeIcon from "../ThemeIcon.astro";
         }
       </ul>
 
+      <!-- Bouton contact pour mobile -->
       <div
         class="absolute bottom-0 left-0 w-full px-4 py-6 border-t border-gray-200 dark:border-gray-700"
       >
-        <div class="flex items-center justify-center">
-          <button
-            class="bg-mint-600 text-white px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-mint-900 transition-colors w-full"
-            data-cal-link="kevine-yves/entretien-pour-alternance"
-            data-cal-namespace="entretien-pour-alternance"
-            data-cal-config='{"layout":"month_view"}'
-          >
-            Prenons contact
-          </button>
-        </div>
+        <button
+          class="w-full bg-mint-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-mint-900 transition-colors"
+          data-cal-link="kevine-yves/entretien-pour-alternance"
+          data-cal-namespace="entretien-pour-alternance"
+          data-cal-config='{"layout":"month_view"}'
+        >
+          Prenons contact
+        </button>
       </div>
     </nav>
   </div>
 </header>
 
 <script>
-  // Mobile Menu Toggle Script
+  // Script de basculement du menu mobile
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenuCloseButton = document.getElementById("mobile-menu-close");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -151,13 +148,11 @@ import ThemeIcon from "../ThemeIcon.astro";
     document.body.classList.toggle("overflow-hidden");
   }
 
-  // Event Listeners
   mobileMenuButton?.addEventListener("click", toggleMobileMenu);
   mobileMenuCloseButton?.addEventListener("click", toggleMobileMenu);
 
-  // Close mobile menu when a link is clicked
-  const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
-  mobileMenuLinks.forEach((link) => {
+  // Fermeture du menu mobile lors du clic sur un lien
+  document.querySelectorAll("#mobile-menu a").forEach((link) => {
     link.addEventListener("click", toggleMobileMenu);
   });
 </script>

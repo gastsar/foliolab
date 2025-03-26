@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logoTelo from "../../assets/test.svg";
 const footerLinks = [
   {
     title: "Navigation",
@@ -32,12 +34,14 @@ const currentYear = new Date().getFullYear();
       <!-- Bloc À propos -->
       <div>
         <div class="flex items-center space-x-3 mb-4">
-          <div
-            class="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-2xl"
-          >
-            P
-          </div>
-          <span class="text-2xl font-bold">Portfolio</span>
+          <Image
+            src={logoTelo}
+            alt="Logo Telo"
+            class="object-cover"
+            width={250}
+            height={20}
+            loading="eager"
+          />
         </div>
         <p class="leading-relaxed">
           Développeur web passionné, créant des expériences numériques

@@ -1,5 +1,4 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import LayoutLegal from "@/layouts/LayoutLegal.astro";
 
 // Configuration de la Politique de Cookies
@@ -85,12 +84,14 @@ const politiqueCookies = {
 ---
 
 <LayoutLegal title="Politique de Cookies">
-  <section class="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-xl">
-    <h1 class="text-3xl font-bold text-gray-800 mb-4">
+  <section
+    class="max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl"
+  >
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">
       {politiqueCookies.title}
     </h1>
 
-    <p class="text-gray-600 mb-6">
+    <p class="text-gray-600 dark:text-gray-300 mb-6">
       Dernière mise à jour : <span class="font-semibold"
         >{politiqueCookies.lastUpdated}</span
       >
@@ -99,27 +100,31 @@ const politiqueCookies = {
     {
       politiqueCookies.sections.map((section, index) => (
         <div class="mb-6">
-          <h2 class="text-2xl font-semibold text-gray-700 mb-3">
+          <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-3">
             {section.title}
           </h2>
 
           {section.content && (
-            <p class="text-gray-600 mb-3">{section.content}</p>
+            <p class="text-gray-600 dark:text-gray-300 mb-3">
+              {section.content}
+            </p>
           )}
 
           {section.subsections &&
             section.subsections.map((subsection) => (
               <div class="mb-4">
-                <h3 class="text-xl font-semibold text-gray-600 mb-2">
+                <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">
                   {subsection.name}
                 </h3>
-                <p class="text-gray-500">{subsection.description}</p>
+                <p class="text-gray-500 dark:text-gray-300">
+                  {subsection.description}
+                </p>
               </div>
             ))}
 
           {section.links && (
             <div class="mt-4">
-              <h3 class="text-xl font-semibold text-gray-600 mb-2">
+              <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">
                 Liens utiles
               </h3>
               <ul class="list-disc list-inside">
@@ -129,7 +134,7 @@ const politiqueCookies = {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-blue-600 hover:underline"
+                      class="text-mint-600 hover:underline"
                     >
                       {link.name}
                     </a>

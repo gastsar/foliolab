@@ -42,29 +42,30 @@ import Layout from "../layouts/Layout.astro";
         </p>
 
         <div class="mt-4 flex gap-4 sm:mt-6">
-          <a
+          <button
             class="inline-block rounded border border-mint-600 bg-mint-600 px-5 py-3 font-medium text-white hover:text-gray-800! shadow-sm transition-colors dark:hover:text-white/80! cursor-pointer hover:bg-mint-700/50"
             data-cal-link="kevine-yves/entretien-pour-alternance"
             data-cal-namespace="entretien-pour-alternance"
             data-cal-config='{"layout":"month_view"}'
           >
             Me contacter
-          </a>
+          </button>
 
           <a
             class="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
-            href="#"
+            href="/projects"
           >
             Voir mes projets
           </a>
         </div>
       </div>
 
-      <div>
+      <div class="mt-8 lg:mt-0 hidden lg:block">
         <Image
           src={HeroSvg}
           alt="Hero SVG"
           class="w-full h-full object-cover"
+          loading="eager"
         />
       </div>
     </div>
